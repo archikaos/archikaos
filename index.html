@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCHIKAOS — Jordan Billingsley | One Less Mess</title>
+<meta name="description" content="One less mess. Calm writing on design technology, AI, and the practice of architecture — by Jordan Billingsley. Send me your mess; every one gets a reply.">
+<meta property="og:title" content="ARCHIKAOS — Jordan Billingsley">
+<meta property="og:description" content="One less mess. Calm writing on design technology, AI, and architecture practice. No ads, nothing for sale — just the writing.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* calm palette — warm cream ground, warm near-black ink, one desaturated teal accent.
+       (arousal tracks saturation; blue-greens rate most restorative; fewer colors > "the right" colors) */
+    --paper:#f7f3ea;
+    --paper-lift:#fdfbf6;
+    --card:#ffffff;
+    --ink:#23262b;
+    --body:#33363b;
+    --dim:#655f55;
+    --faint:#958d7f;
+    --line:rgba(35,38,43,.13);
+    --line-soft:rgba(35,38,43,.07);
+    --accent:#2f6d63;        /* deep calm teal — 5.4:1 on paper */
+    --accent-ink:#24564e;
+    --accent-wash:rgba(47,109,99,.08);
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--body);
+    font-family:'Archivo',system-ui,sans-serif;font-weight:400;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  @media(max-width:600px){.wrap{padding:0 20px}}
+  .mono{font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:.06em}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#fff}
+
+  .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* ---------- header ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:flex-end;align-items:center;
+    padding:10px 28px;gap:16px;background:rgba(247,243,234,0);backdrop-filter:blur(0);
+    border-bottom:1px solid transparent;transition:background .4s,border-color .4s,backdrop-filter .4s}
+  header.scrolled{background:rgba(247,243,234,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-soft)}
+  .hnav{display:flex;gap:24px;align-items:center}
+  .hnav a{font-size:13.5px;font-weight:500;color:var(--dim);transition:color .25s}
+  .hnav a:hover{color:var(--ink)}
+  .hsub{font-size:13px;font-weight:600;background:var(--accent);color:#fff !important;padding:9px 18px;border-radius:99px;transition:background .25s;white-space:nowrap}
+  .hsub:hover{background:var(--accent-ink)}
+  @media(max-width:900px){.hnav a:not(.hsub){display:none}}
+  @media(max-width:900px){
+    header{padding:12px 20px}
+    .hsub{padding:11px 20px;font-size:14px}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:96px 0 40px;position:relative;overflow:hidden}
+  .hero .wrap{position:relative;z-index:1}
+  #gridfield{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
+    -webkit-mask-image:radial-gradient(ellipse 80% 95% at 38% 42%,#000 25%,transparent 88%);
+    mask-image:radial-gradient(ellipse 80% 95% at 38% 42%,#000 25%,transparent 88%)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+  .eyebrow b{color:var(--accent);font-weight:500}
+  .wordmark{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(3.4rem,10vw,7rem);line-height:.92;letter-spacing:-.02em;color:var(--ink);text-transform:uppercase;user-select:none}
+  .wordmark .k{color:var(--accent);position:relative;display:inline-block}
+  .wordmark .kl{display:inline-block;transform-origin:50% 68%;will-change:transform}
+  .kline{position:absolute;left:2%;right:3%;bottom:.03em;height:.04em;background:var(--accent);border-radius:3px;
+    transform:scaleX(0);transform-origin:left center;transition:transform 1s cubic-bezier(.22,.8,.3,1);pointer-events:none}
+  .k.calm .kline{transform:scaleX(1)}
+  .whisper{margin-top:10px;min-height:1.5em;font-family:'Newsreader',serif;font-style:italic;font-size:1.05rem;color:var(--dim);
+    opacity:0;transition:opacity 1.4s ease}
+  .whisper.show{opacity:1}
+  .hero-sub{margin-top:16px;max-width:52ch;color:var(--dim);font-size:clamp(1.02rem,1.7vw,1.15rem);line-height:1.55}
+  .hero-sub b{color:var(--ink);font-weight:600}
+  .hero-links{display:flex;gap:12px 28px;flex-wrap:wrap;margin-top:20px}
+  .tlink{font-weight:600;font-size:14.5px;color:var(--accent);border-bottom:1.5px solid transparent;padding-bottom:2px;transition:border-color .2s,color .2s}
+  .tlink:hover{border-color:var(--accent);color:var(--accent-ink)}
+  .hero-form{margin-top:22px;max-width:420px}
+
+  @media(max-width:820px){
+    .hero{padding:82px 0 32px}
+    .hero-form{max-width:none}
+  }
+
+  /* forms */
+  .sub-form{display:flex;border:1px solid var(--line);background:var(--card);border-radius:12px;overflow:hidden}
+  .sub-form input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--ink);
+    font-family:'Archivo',sans-serif;font-size:16px;padding:14px 16px}
+  .sub-form input::placeholder{color:var(--faint)}
+  .sub-form button{font-family:'Archivo',sans-serif;font-size:14px;font-weight:600;
+    background:var(--accent);color:#fff;border:0;padding:0 20px;min-height:48px;cursor:pointer;transition:background .25s;white-space:nowrap}
+  .sub-form button:hover{background:var(--accent-ink)}
+  .sub-note{margin-top:9px;font-size:12.5px;color:var(--faint);line-height:1.6}
+  .sub-note.ok{color:var(--accent);font-weight:500}
+  @media(max-width:480px){.sub-form{flex-direction:column}.sub-form button{padding:14px}}
+
+  /* ---------- sections ---------- */
+  section{padding:56px 0;border-top:1px solid var(--line-soft)}
+  #writing{padding-top:20px;border-top:0}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:28px;flex-wrap:wrap}
+  @media(max-width:600px){
+    section{padding:44px 0}
+    .sec-head{margin-bottom:22px;gap:10px}
+    .sec-sub{margin-left:0;flex-basis:100%}
+  }
+  .sec-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,3.8vw,2.5rem);letter-spacing:-.01em;color:var(--ink)}
+  .sec-sub{font-size:13.5px;color:var(--faint);margin-left:auto}
+
+  /* ---------- writing ---------- */
+  .series-card{border:1px solid var(--line-soft);background:var(--paper-lift);border-radius:14px;padding:20px 24px;margin-bottom:20px;
+    display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+  @media(max-width:760px){.series-card{grid-template-columns:1fr;gap:10px}}
+  .series-card h3{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.1rem,2.2vw,1.4rem);color:var(--ink);margin-bottom:5px}
+  .series-card p{color:var(--dim);font-size:.94rem;line-height:1.55;max-width:60ch}
+  .series-card .epi{margin-top:9px;font-family:'Newsreader',serif;font-style:italic;font-size:1rem;color:var(--ink);line-height:1.45}
+  .series-sched{font-size:12px;color:var(--faint);text-align:right;line-height:1.7;white-space:nowrap}
+  @media(max-width:760px){.series-sched{text-align:left}}
+
+  /* indented hanging list — numerals sit in the left margin */
+  .toclist{padding-left:24px;border-left:2px solid var(--line-soft)}
+  @media(max-width:640px){.toclist{padding-left:14px}}
+  .toc{display:grid;grid-template-columns:40px 1fr auto;gap:16px;align-items:baseline;
+    padding:12px 10px 12px 0;border-bottom:1px solid var(--line-soft);transition:background .25s,padding-left .25s;border-radius:8px}
+  .toc:last-child{border-bottom:0}
+  .toc.live{cursor:pointer}
+  .toc.live:hover{background:var(--paper-lift);padding-left:8px}
+  .toc.tk{opacity:.5}
+  @media(max-width:640px){
+    .toclist{padding-left:14px}
+    .toc{grid-template-columns:26px 1fr;gap:10px;padding:14px 4px 14px 0}
+    .t-act{grid-column:2;grid-row:2;margin-top:2px;align-self:start}
+    .toc.live{position:relative}
+  }
+  .t-num{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:1.1rem;color:var(--faint)}
+  .toc.live:hover .t-num{color:var(--accent)}
+  .t-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.05rem,2vw,1.3rem);letter-spacing:-.01em;color:var(--ink);line-height:1.2}
+  .t-sent{margin-top:3px;font-family:'Newsreader',serif;font-style:italic;font-size:.95rem;color:var(--dim)}
+  .t-sent .on{font-style:normal;font-weight:500;color:var(--accent)}
+  .t-sent .t-date{color:var(--faint);font-size:.88rem}
+  .t-act{font-size:13px;font-weight:600;color:var(--dim);white-space:nowrap;align-self:center}
+  .toc.live:hover .t-act{color:var(--accent)}
+  .toc.tk .t-act{font-weight:400;font-style:italic;color:var(--faint)}
+
+  /* ---------- the mess ---------- */
+  .mess-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  @media(max-width:860px){.mess-grid{grid-template-columns:1fr;gap:40px}}
+  .mantra{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(1.5rem,3.4vw,2.15rem);line-height:1.28;margin-bottom:24px}
+  .mantra span{display:block}
+  .mantra .m1{color:var(--faint)}
+  .mantra .m2{color:var(--dim)}
+  .mantra .m3{color:var(--ink)}
+  .mantra .m3 em{font-style:italic;color:var(--accent)}
+  .mess-copy p{color:var(--dim);font-size:1.04rem;line-height:1.7;max-width:54ch}
+  .mess-copy p b{color:var(--ink);font-weight:600}
+  .mess-copy p+p{margin-top:14px}
+  .mess-pledge{margin-top:26px;border-left:3px solid var(--accent);padding:8px 0 8px 18px;
+    font-size:.95rem;color:var(--dim);line-height:2}
+  .mess-pledge b{color:var(--accent);font-weight:600}
+  /* the margin — a quiet ruled page to write on */
+  .margin-card{background:
+      linear-gradient(90deg,transparent 26px,rgba(47,109,99,.25) 26px,rgba(47,109,99,.25) 27px,transparent 27px),
+      repeating-linear-gradient(var(--card),var(--card) 31px,rgba(35,38,43,.05) 31px,rgba(35,38,43,.05) 32px);
+    background-color:var(--card);color:var(--ink);padding:32px 30px 30px 44px;
+    border:1px solid var(--line-soft);border-radius:16px;box-shadow:0 18px 44px rgba(35,38,43,.09)}
+  .margin-card .ah{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--faint);margin-bottom:22px;text-transform:uppercase}
+  .margin-card label{display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);margin:0 0 7px}
+  .margin-card label span{font-weight:400;text-transform:none;letter-spacing:0;color:var(--faint)}
+  .margin-card input,.margin-card textarea{width:100%;background:#fff;border:1px solid var(--line);border-radius:9px;color:var(--ink);
+    font-family:'Archivo',sans-serif;font-size:16px;padding:13px 14px;outline:0;transition:border-color .2s;margin-bottom:18px}
+  .margin-card textarea{min-height:130px;resize:vertical;line-height:1.6}
+  .margin-card input::placeholder,.margin-card textarea::placeholder{color:var(--faint)}
+  .margin-card input:focus,.margin-card textarea:focus{border-color:var(--accent)}
+  .mess-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.mess-row{grid-template-columns:1fr}}
+  .margin-card button{width:100%;font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;border-radius:10px;
+    background:var(--accent);color:#fff;border:0;padding:16px;min-height:52px;cursor:pointer;transition:background .25s}
+  .margin-card button:hover{background:var(--accent-ink)}
+  @media(max-width:600px){.margin-card{padding:26px 22px 24px 34px}}
+  .mess-note{margin-top:12px;font-size:12.5px;color:var(--faint);line-height:1.6}
+  .mess-note.ok{color:var(--accent);font-weight:500}
+
+  /* ---------- reader modal — serif long-form, per legibility research ---------- */
+  .modal{position:fixed;inset:0;z-index:60;display:none;overflow-y:auto;background:rgba(38,35,30,.6);backdrop-filter:blur(6px)}
+  .modal.open{display:block}
+  body.locked{overflow:hidden}
+  .m-prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:64}
+  .m-close{position:fixed;top:16px;right:16px;z-index:65;font-size:14px;font-weight:600;
+    color:var(--ink);border:1px solid var(--line);background:rgba(255,255,255,.95);border-radius:99px;padding:11px 20px;min-height:44px;cursor:pointer;transition:.25s}
+  .m-close:hover{color:var(--accent);border-color:var(--accent)}
+  .m-inner{max-width:740px;margin:60px auto 96px;padding:58px 60px 60px;position:relative;
+    background:var(--paper);color:var(--ink);border-radius:18px;border-top:3px solid var(--accent);
+    box-shadow:0 30px 80px rgba(20,18,15,.4)}
+  @media(max-width:640px){.m-inner{margin:0;padding:74px 22px 60px;min-height:100vh;border-radius:0}}
+  .m-meta{display:flex;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:var(--faint);margin-bottom:24px;text-transform:uppercase}
+  .m-meta .acc{color:var(--accent);font-weight:500}
+  .m-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4.5vw,2.6rem);letter-spacing:-.015em;line-height:1.12;margin-bottom:8px;color:var(--ink)}
+  .m-title .w{color:var(--faint)}
+  .m-title .on{color:var(--accent);font-style:italic}
+  .m-part{font-size:13px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:40px}
+  .essay p{font-family:'Newsreader',serif;font-size:clamp(1.12rem,1.05rem + .35vw,1.24rem);line-height:1.72;color:var(--body);margin-bottom:1.25em;max-width:62ch}
+  .essay p b{font-weight:600;color:var(--ink)}
+  .essay p em{color:var(--ink);font-style:italic}
+  .essay .qstack{border-left:3px solid var(--accent);padding:10px 0 10px 20px;margin:0 0 1.25em;background:var(--accent-wash);border-radius:0 10px 10px 0;
+    font-family:'Newsreader',serif;font-style:italic;font-size:1.08rem;line-height:1.9;color:var(--dim)}
+  .essay .pointer{font-style:italic;color:var(--dim);font-size:1.05rem}
+  .m-q{margin-top:40px;border:1px solid var(--accent);background:var(--accent-wash);border-radius:14px;padding:22px 24px}
+  .m-q .ql{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:500}
+  .m-q p{font-family:'Newsreader',serif;font-size:1.12rem;line-height:1.55;color:var(--ink)}
+  .m-tags{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.05em}
+  .m-next{margin-top:40px;padding-top:26px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .m-next .nxt{font-size:14px;font-weight:600;color:var(--dim);cursor:pointer;
+    border:1px solid var(--line);border-radius:99px;padding:12px 22px;min-height:48px;transition:.25s;background:transparent;font-family:'Archivo',sans-serif}
+  .m-next .nxt:hover{color:var(--accent);border-color:var(--accent)}
+  .m-next .nolink{font-family:'Newsreader',serif;font-style:italic;font-size:1rem;color:var(--dim)}
+  @media(max-width:640px){
+    .m-next{flex-direction:column;align-items:stretch}
+    .m-next .nxt{width:100%;text-align:center}
+  }
+  .m-spec{margin-top:28px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;color:var(--faint);text-transform:uppercase}
+
+  /* ---------- books ---------- */
+  .shelf{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+  @media(max-width:820px){.shelf{grid-template-columns:1fr}}
+  .bk{display:grid;grid-template-columns:190px 1fr;gap:26px;align-items:start}
+  @media(max-width:520px){.bk{grid-template-columns:1fr;gap:18px}.bk .cover{max-width:150px}}
+  /* TODO: swap .cover blocks for real cover <img> when you have the art */
+  .cover{aspect-ratio:2/3;border-radius:8px;background:#23262b;color:#f3efe7;position:relative;padding:18px;
+    display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;box-shadow:0 10px 26px rgba(35,38,43,.18)}
+  a:hover .cover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(35,38,43,.26)}
+  .cover .cpub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;color:rgba(243,239,231,.45);text-transform:uppercase}
+  .cover .ctitle{font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;line-height:1.1;letter-spacing:-.01em;margin-top:auto}
+  .cover .ctitle .acc{color:#7fc2b5;font-style:italic}
+  .cover .csub{font-size:.7rem;color:rgba(243,239,231,.6);margin-top:8px;line-height:1.45}
+  .cover .cauthor{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:rgba(243,239,231,.6);margin-top:14px;text-transform:uppercase}
+  .bk-info .badge{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-wash);border-radius:99px;padding:5px 12px;margin-bottom:14px}
+  .bk-info h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.35rem;letter-spacing:-.01em;line-height:1.2;margin-bottom:6px;color:var(--ink)}
+  .bk-info .byline{font-size:12.5px;color:var(--faint);letter-spacing:.04em;margin-bottom:12px;text-transform:uppercase}
+  .bk-info p{color:var(--dim);font-size:.98rem;line-height:1.65;max-width:44ch}
+  .bk-info .blink{display:inline-block;margin-top:14px;font-size:14px;font-weight:600;color:var(--accent)}
+  .bk-info .blink:hover{color:var(--accent-ink)}
+
+  /* ---------- speaking ---------- */
+  .keynote{background:var(--card);border:1px solid var(--line-soft);border-left:4px solid var(--accent);border-radius:16px;
+    padding:34px 36px;margin-bottom:40px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;box-shadow:0 10px 30px rgba(35,38,43,.06)}
+  @media(max-width:760px){.keynote{grid-template-columns:1fr}}
+  .keynote .kk{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .keynote h3{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.3rem,3vw,1.8rem);letter-spacing:-.01em;line-height:1.2;margin-bottom:10px;color:var(--ink)}
+  .keynote p{color:var(--dim);font-size:.98rem;line-height:1.65;max-width:56ch}
+  .keynote .kcta{font-size:14px;font-weight:600;background:var(--accent);color:#fff;border-radius:99px;padding:13px 24px;min-height:48px;display:inline-flex;align-items:center;transition:background .25s;white-space:nowrap;justify-self:start}
+  .keynote .kcta:hover{background:var(--accent-ink)}
+  .talks{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:680px){.talks{grid-template-columns:1fr}}
+  .talk{background:var(--paper-lift);border:1px solid var(--line-soft);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:7px;transition:background .25s}
+  .talk:hover{background:var(--card)}
+  .talk .kind{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .talk h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;line-height:1.3;color:var(--ink)}
+  .talk .tn{color:var(--dim);font-size:.92rem;line-height:1.55}
+
+  /* ---------- method ---------- */
+  .method-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+  @media(max-width:820px){.method-grid{grid-template-columns:1fr;gap:40px}}
+  .prin{padding:24px 0;border-bottom:1px solid var(--line-soft);display:grid;grid-template-columns:52px 1fr;gap:18px}
+  .prin:first-child{border-top:1px solid var(--line-soft)}
+  .prin .pn{font-family:'Fraunces',serif;font-style:italic;font-weight:600;color:var(--accent);font-size:1.1rem;padding-top:2px}
+  .prin h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.18rem;letter-spacing:-.01em;margin-bottom:6px;color:var(--ink)}
+  .prin p{color:var(--dim);font-size:.96rem;line-height:1.65;max-width:56ch}
+  .log-card{border:1px solid var(--line-soft);background:var(--card);border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(35,38,43,.06)}
+  .log-card .lhead{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.08em;margin-bottom:8px;text-transform:uppercase}
+  .log-card .lsub{font-size:.94rem;color:var(--dim);line-height:1.6;margin-bottom:20px}
+  .scale{display:flex;gap:8px}
+  .scale button{flex:1;font-family:'JetBrains Mono',monospace;font-size:14px;padding:14px 0;min-height:48px;background:transparent;border:1px solid var(--line);border-radius:10px;color:var(--dim);cursor:pointer;transition:.2s}
+  .scale button:hover{border-color:var(--dim);color:var(--ink)}
+  .scale button.sel{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .scale-cap{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin-top:10px}
+  .spark{display:flex;align-items:flex-end;gap:4px;height:54px;margin-top:22px}
+  .spark i{flex:1;background:var(--line);transition:height .5s,background .3s;border-radius:2px}
+
+  /* ---------- about ---------- */
+  .about-copy{max-width:66ch}
+  .about-copy p{color:var(--dim);font-size:1.05rem;line-height:1.7}
+  .about-copy p b{color:var(--ink);font-weight:600}
+  .about-copy p+p{margin-top:14px}
+  .facts{display:flex;gap:12px 24px;flex-wrap:wrap;margin-top:24px;font-size:12px;letter-spacing:.06em;color:var(--faint);text-transform:uppercase;font-weight:500}
+  .facts span::before{content:"— ";color:var(--accent)}
+  .cv-link{display:inline-block;margin-top:20px;font-size:14px;font-weight:600;color:var(--accent)}
+  .cv-link:hover{color:var(--accent-ink)}
+
+  /* ---------- subscribe ---------- */
+  .subfinal{padding-bottom:96px}
+  .subfinal .big{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2rem,5.5vw,3.6rem);letter-spacing:-.015em;line-height:1.08;margin-bottom:16px;color:var(--ink)}
+  .subfinal .big em{font-style:italic;color:var(--accent)}
+  .subfinal .sp{color:var(--dim);font-size:1.05rem;line-height:1.65;max-width:54ch;margin-bottom:28px}
+  .alt-chan{display:flex;gap:12px 28px;flex-wrap:wrap;margin-top:32px;font-size:13.5px}
+  .alt-chan a{color:var(--dim);font-weight:500;transition:color .2s}
+  .alt-chan a:hover{color:var(--accent)}
+  .alt-chan .lbl{color:var(--faint)}
+
+  footer{border-top:1px solid var(--line-soft);padding:34px 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:12.5px;color:var(--faint)}
+  footer .accent{color:var(--accent)}
+  @media(max-width:600px){footer{padding:28px 20px;flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <nav class="hnav">
+    <a href="#writing">Start Reading</a>
+    <a href="#mess">Tell Me About Your Mess</a>
+    <a href="#subscribe" class="hsub">Get New Essays</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <canvas id="gridfield" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="eyebrow reveal in">JORDAN BILLINGSLEY <b>·</b> DESIGN TECHNOLOGY</div>
+    <h1 class="wordmark reveal in" id="mark" aria-label="ARCHIKAOS">ARCHI<span class="k" id="kaos"><span class="kl">K</span><span class="kl">A</span><span class="kl">O</span><span class="kl">S</span><span class="kline" aria-hidden="true"></span></span></h1>
+    <p class="whisper" id="whisper" aria-hidden="true">Chaos is the medium. Calm is the method.</p>
+    <p class="hero-sub reveal in">Calm writing about the places where architecture meets technology — BIM, computation, AI, and the people who make them work. Each essay untangles one thing. <b>No ads, nothing for sale. Just the writing.</b></p>
+  </div>
+</div>
+
+<!-- ============ WRITING ============ -->
+<section id="writing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">The writing</h2>
+      <span class="sec-sub">essays, in order</span>
+    </div>
+
+    <div class="series-card reveal">
+      <div>
+        <h3>“You Are, Therefore I Am”</h3>
+        <p>Five essays, one sentence — the emphasis moves one word each Monday. Descartes, inverted for the age of the prompt. On the surface, about what we do to AI. Underneath, about what using AI does to us.</p>
+        <p class="epi">“The machine speaks with the voice of everyone. Our work is answering as someone.”</p>
+      </div>
+      <div class="series-sched">
+        Five Mondays<br>
+        Jun 22 – Jul 20, 2026
+      </div>
+    </div>
+
+    <div id="toclist" class="toclist">
+      <div class="toc live reveal" data-open="1" role="button" tabindex="0" aria-label="Read essay one: The Portrait in the Prompt">
+        <span class="t-num">I</span>
+        <div>
+          <div class="t-title">The Portrait in the Prompt</div>
+          <div class="t-sent"><span class="on">YOU</span> are, therefore I am. <span class="t-date">— Jun 22, 2026</span></div>
+        </div>
+        <span class="t-act">read</span>
+      </div>
+      <div class="toc live reveal" data-open="2" role="button" tabindex="0" aria-label="Read essay two: Present in Neither">
+        <span class="t-num">II</span>
+        <div>
+          <div class="t-title">Present in Neither</div>
+          <div class="t-sent">you <span class="on">ARE</span>, therefore I am. <span class="t-date">— Jun 29, 2026</span></div>
+        </div>
+        <span class="t-act">read</span>
+      </div>
+      <div class="toc live reveal" data-open="3" role="button" tabindex="0" aria-label="Read essay three: The Rehearsal">
+        <span class="t-num">III</span>
+        <div>
+          <div class="t-title">The Rehearsal</div>
+          <div class="t-sent">you are, <span class="on">THEREFORE</span> I am. <span class="t-date">— Jul 6, 2026</span></div>
+        </div>
+        <span class="t-act">read</span>
+      </div>
+      <!-- forthcoming — when published: add essay to ESSAYS, swap class "tk"→"live", add data-open, set t-act to "read" -->
+      <div class="toc tk reveal">
+        <span class="t-num">IV</span>
+        <div>
+          <div class="t-title">The Overrule</div>
+          <div class="t-sent">you are, therefore <span class="on">I</span> am.</div>
+        </div>
+        <span class="t-act">forthcoming — Jul 13</span>
+      </div>
+      <div class="toc tk reveal">
+        <span class="t-num">V</span>
+        <div>
+          <div class="t-title">Formation</div>
+          <div class="t-sent">you are, therefore I <span class="on">AM</span>.</div>
+        </div>
+        <span class="t-act">forthcoming — Jul 20</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE MESS ============ -->
+<section id="mess">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">Tell me about your mess</h2>
+      <span class="sec-sub">every one gets a reply</span>
+    </div>
+    <div class="mess-grid">
+      <div class="mess-copy reveal">
+        <p class="mantra">
+          <span class="m1">Chaos is the medium.</span>
+          <span class="m2">Calm is the method.</span>
+          <span class="m3">I'm curious about <em>the mess</em>.</span>
+        </p>
+        <p>Every practice has one. The workflow nobody will touch. The model that fights back. The template three people understand and one person trusts. The tool the firm bought two years ago and never opened.</p>
+        <p>That's the mess — and I collect them. <b>Write to me about yours. I read every one, and I reply to every one.</b> The best tangles become future essays, anonymized unless you'd like the credit. That's the deal behind the name: you send me a mess, and everyone gets one less.</p>
+        <div class="mess-pledge">
+          <b>—</b> every mess gets a reply<br>
+          <b>—</b> the best tangles become essays<br>
+          <b>—</b> no mess is too small: tedium is the enemy, not you
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="margin-card" data-ask>
+          <div class="ah"><span>The margin</span><span>yours to write in</span></div>
+          <label for="at">What kind of mess</label>
+          <input id="at" name="topic" type="text" list="mess-types" placeholder="BIM · computation · AI · adoption · a career knot…">
+          <datalist id="mess-types">
+            <option value="BIM standards & workflows"></option>
+            <option value="Computational / parametric design"></option>
+            <option value="AI in practice"></option>
+            <option value="Technology adoption & culture"></option>
+            <option value="Automation & scripting"></option>
+            <option value="A design technology career"></option>
+          </datalist>
+          <label for="aq">The mess</label>
+          <textarea id="aq" name="question" placeholder="What's tangled? Start anywhere." required></textarea>
+          <div class="mess-row">
+            <div>
+              <label for="an">Name <span>(optional)</span></label>
+              <input id="an" name="name" type="text" placeholder="Ada">
+            </div>
+            <div>
+              <label for="ae">Email <span>(for the reply)</span></label>
+              <input id="ae" name="email" type="email" placeholder="you@firm.com" required>
+            </div>
+          </div>
+          <button type="submit">Send the mess</button>
+          <div class="mess-note" data-asknote>Goes straight to Jordan. Never shared, never spammed.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKS ============ -->
+<section id="books">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">On the shelf</h2>
+      <span class="sec-sub">books I'm featured in</span>
+    </div>
+    <div class="shelf">
+      <a class="bk reveal" data-link="agentic" target="_blank" rel="noopener">
+        <div class="cover">
+          <span class="cpub">ROUTLEDGE — 2026</span>
+          <span class="ctitle">The <span class="acc">Agentic</span> Architect</span>
+          <span class="csub">AI and the Resurgence of Practice</span>
+          <span class="cauthor">Randy Deutsch</span>
+        </div>
+        <div class="bk-info">
+          <span class="badge">2026</span>
+          <h3>The Agentic Architect</h3>
+          <div class="byline">Randy Deutsch · Routledge</div>
+          <p>How architects reclaim agency in the age of AI. Agentic AI completes tasks; an agentic architect acts with purpose. Featuring a contribution from Jordan.</p>
+          <span class="blink">Find the book ↗</span>
+        </div>
+      </a>
+      <a class="bk reveal" data-link="superusers" target="_blank" rel="noopener">
+        <div class="cover">
+          <span class="cpub">ROUTLEDGE — 2019</span>
+          <span class="ctitle">Super<span class="acc">users</span></span>
+          <span class="csub">Design Technology Specialists and the Future of Practice</span>
+          <span class="cauthor">Randy Deutsch</span>
+        </div>
+        <div class="bk-info">
+          <span class="badge">2019</span>
+          <h3>Superusers</h3>
+          <div class="byline">Randy Deutsch · Routledge</div>
+          <p>The book that named the role — design technology specialists and the future of practice. Jordan is a contributor.</p>
+          <span class="blink">Find the book ↗</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPEAKING ============ -->
+<section id="speaking">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">Speaking</h2>
+      <span class="sec-sub">sharing the work in person</span>
+    </div>
+
+    <div class="keynote reveal">
+      <div>
+        <div class="kk">New keynote — fall 2026</div>
+        <h3>You Are, Therefore I Am: Agency, AI, and the Formation of the Design Professional</h3>
+        <p>Twenty minutes, five words, one argument — the machine speaks with the voice of everyone; our work is answering as someone. For technology tracks and firm leadership retreats.</p>
+      </div>
+      <a class="kcta" data-mail="speaking">Invite me to speak</a>
+    </div>
+
+    <div class="talks reveal">
+      <div class="talk"><span class="kind">Session</span><h4>Advancing Computational Building Design</h4><span class="tn">Parametric and generative methods, from strategy to production.</span></div>
+      <div class="talk"><span class="kind">Session</span><h4>Creating a Technology-Receptive Culture</h4><span class="tn">Adoption is a people problem before it's a software problem.</span></div>
+      <div class="talk"><span class="kind">Workshop</span><h4>BIM Manager Boot Camp</h4><span class="tn">Co-instructor. The discipline behind the deliverables.</span></div>
+      <div class="talk"><span class="kind">Article</span><h4>How to Measure Software Investment</h4><span class="tn">Making the technology budget legible to leadership.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">How I work</h2>
+      <span class="sec-sub">three principles and a log</span>
+    </div>
+    <div class="method-grid">
+      <div class="reveal">
+        <div class="prin">
+          <span class="pn">i.</span>
+          <div>
+            <h4>Create first, critique second.</h4>
+            <p>You cannot critique and create simultaneously. Make the first mark on the page and go from there — design is iterative, and there's only so much you can hold in your head.</p>
+          </div>
+        </div>
+        <div class="prin">
+          <span class="pn">ii.</span>
+          <div>
+            <h4>Requirements are an armature, not a mold.</h4>
+            <p>Standards are a framework for achieving more, not a box to stay inside. There are many paths through the requirements — but you cannot ignore them.</p>
+          </div>
+        </div>
+        <div class="prin">
+          <span class="pn">iii.</span>
+          <div>
+            <h4>Grade the overrule, not the output.</h4>
+            <p>The question for any AI-polished deliverable: where in this did a human disagree? A review that can't locate the disagreement is reviewing the machine, not the designer.</p>
+          </div>
+        </div>
+      </div>
+      <div class="log-card reveal">
+        <div class="lhead"><span>Daily log</span><span id="today">— · —</span></div>
+        <p class="lsub">I log every day from −2 to +2. The +2 days share a pattern: creating, building, developing, connecting. Log yours →</p>
+        <div class="scale" id="scale">
+          <button data-v="-2">−2</button>
+          <button data-v="-1">−1</button>
+          <button data-v="0">0</button>
+          <button data-v="1">+1</button>
+          <button data-v="2">+2</button>
+        </div>
+        <div class="scale-cap"><span>bad day</span><span>great day</span></div>
+        <div class="spark" id="spark"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">About</h2>
+      <span class="sec-sub">the person behind the margin</span>
+    </div>
+    <div class="about-copy reveal">
+      <p><b>Jordan Billingsley</b> is a design technologist who lives for complex puzzles and has zero patience for tedium — which is exactly why he automates it away.</p>
+      <p>He is Senior Associate and Senior Design Technology Manager at <b>Hord Coplan Macht</b> in Baltimore, adjunct faculty at <b>Morgan State University's</b> School of Architecture &amp; Planning, and a contributor to <b>Superusers</b> (2019) and <b>The Agentic Architect</b> (2026). Trained as an architect at the University of Illinois at Urbana-Champaign (B.Arch, M.Arch).</p>
+      <p>ARCHIKAOS is his notebook on the space between carefully designed structure and the formless matter before creation — turning disorder into systems, and systems back into possibility. One mess at a time.</p>
+      <div class="facts">
+        <span>Hord Coplan Macht</span><span>Morgan State</span><span>UIUC B.Arch / M.Arch</span><span>Baltimore, MD</span>
+      </div>
+      <a class="cv-link" data-link="linkedin" target="_blank" rel="noopener">Full trajectory on LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUBSCRIBE ============ -->
+<section id="subscribe" class="subfinal">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="big">Fewer messes, <em>together.</em></h2>
+      <p class="sp">New essays by email as they're written — on design technology, AI, and the practice of architecture. Written by a human, for the humans still doing the untangling.</p>
+      <form class="sub-form" data-sub style="max-width:440px">
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit">Get new essays</button>
+      </form>
+      <div class="sub-note" data-subnote>No noise. Unsubscribe anytime.</div>
+      <div class="alt-chan">
+        <span><span class="lbl">The mess —</span> <a href="#mess">tell me what's tangled ↑</a></span>
+        <span><span class="lbl">LinkedIn —</span> <a data-link="linkedin" target="_blank" rel="noopener">/in/jordan-billingsley ↗</a></span>
+        <span><span class="lbl">Speaking —</span> <a data-mail="speaking">invite me ↗</a></span>
+        <span><span class="lbl">Email —</span> <a data-mail="hello" id="mailtext">hello@archikaos.com</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>ARCHIKAOS © <span id="yr"></span> Jordan Billingsley</span>
+  <span><span class="accent">—</span> no ads, nothing for sale, just the writing</span>
+  <span>set in Fraunces &amp; Newsreader</span>
+</footer>
+
+<!-- ============ READER MODAL ============ -->
+<div class="modal" id="reader" role="dialog" aria-modal="true" aria-label="Essay reader">
+  <div class="m-prog" id="mprog"></div>
+  <button class="m-close" id="mclose">Close ✕</button>
+  <div class="m-inner" id="minner"></div>
+</div>
+
+<script>
+/* ================= CONFIG — everything you need to wire lives here ================= */
+const CFG = {
+  // TODO: paste your list provider's form action to go live.
+  // Buttondown:  "https://buttondown.com/api/emails/embed-subscribe/YOUR_USERNAME"
+  // ConvertKit:  "https://app.kit.com/forms/YOUR_FORM_ID/subscriptions"
+  SUBSCRIBE_ACTION: "",
+  // TODO: paste a Formspree (or similar) endpoint for The Mess form, e.g. "https://formspree.io/f/YOUR_ID"
+  // Until set, the form falls back to opening the visitor's mail app with their mess pre-filled.
+  ASK_ACTION: "",
+  CONTACT_EMAIL: "hello@archikaos.com",            // TODO: replace with your real address
+  LINKEDIN: "https://www.linkedin.com/in/jordan-billingsley/",
+  BOOK_AGENTIC: "https://www.amazon.com/dp/1041167075",
+  BOOK_SUPERUSERS: "https://www.goodreads.com/en/book/show/41861813-superusers",
+  // TODO: after each Monday post, paste the LinkedIn post URL to add a "join the discussion" link.
+  SERIES_LINKEDIN: { 1:"", 2:"", 3:"" }
+};
+
+/* ---------- wire config into the page ---------- */
+document.querySelectorAll('[data-link="linkedin"]').forEach(a=>a.href=CFG.LINKEDIN);
+document.querySelectorAll('[data-link="agentic"]').forEach(a=>a.href=CFG.BOOK_AGENTIC);
+document.querySelectorAll('[data-link="superusers"]').forEach(a=>a.href=CFG.BOOK_SUPERUSERS);
+document.querySelectorAll('[data-mail="speaking"]').forEach(a=>a.href='mailto:'+CFG.CONTACT_EMAIL+'?subject=Speaking%20inquiry%20%E2%80%94%20ARCHIKAOS');
+document.querySelectorAll('[data-mail="hello"]').forEach(a=>a.href='mailto:'+CFG.CONTACT_EMAIL);
+const mt=document.getElementById('mailtext'); if(mt) mt.textContent=CFG.CONTACT_EMAIL;
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- header state ---------- */
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>30));
+
+/* ---------- reveal on scroll ---------- */
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- subscribe forms (demo mode until SUBSCRIBE_ACTION is set) ---------- */
+document.querySelectorAll('[data-sub]').forEach(form=>{
+  const note=form.parentElement.querySelector('[data-subnote]');
+  form.addEventListener('submit',e=>{
+    const email=form.email.value.trim();
+    if(CFG.SUBSCRIBE_ACTION){
+      form.action=CFG.SUBSCRIBE_ACTION; form.method='post'; form.target='_blank';
+      note.textContent='Opening your list provider — check for a confirmation email.';
+      note.classList.add('ok');
+      return; // native submit proceeds
+    }
+    e.preventDefault();
+    if(!email||!email.includes('@'))return;
+    note.textContent='✓ '+email+' captured (demo) — set CFG.SUBSCRIBE_ACTION to wire your list provider.';
+    note.classList.add('ok');
+    form.reset();
+  });
+});
+
+/* ---------- The Mess form (Formspree if configured, mailto fallback otherwise) ---------- */
+(function(){
+  const form=document.querySelector('[data-ask]'); if(!form)return;
+  const note=form.querySelector('[data-asknote]');
+  form.addEventListener('submit',e=>{
+    const q=form.question.value.trim(), email=form.email.value.trim(), name=form.name.value.trim(),
+          topic=form.topic?form.topic.value.trim():'';
+    if(CFG.ASK_ACTION){
+      form.action=CFG.ASK_ACTION; form.method='post'; form.target='_blank';
+      note.textContent='✓ Received — a reply is coming.';
+      note.classList.add('ok');
+      return; // native submit proceeds
+    }
+    e.preventDefault();
+    if(!q||!email||!email.includes('@'))return;
+    const subject=encodeURIComponent('The mess'+(topic?' ('+topic+')':'')+' — ARCHIKAOS');
+    const body=encodeURIComponent((topic?'Topic: '+topic+'\n\n':'')+q+'\n\n— '+(name||'anonymous')+' ('+email+')');
+    window.location.href='mailto:'+CFG.CONTACT_EMAIL+'?subject='+subject+'&body='+body;
+    note.textContent='✓ Opening your mail app — set CFG.ASK_ACTION for an on-page form.';
+    note.classList.add('ok');
+  });
+})();
+
+/* ---------- daily log ---------- */
+(function(){
+  const scale=document.getElementById('scale'), spark=document.getElementById('spark'), today=document.getElementById('today');
+  let hist=[1,2,0,1,2,1,-1,1,2,1,0,2,1,2,1,-1,0,1,2,2];
+  function render(){
+    spark.innerHTML='';
+    hist.forEach(v=>{
+      const bar=document.createElement('i');
+      bar.style.height=Math.max(8,((v+2)/4)*100)+'%';
+      if(v>=2)bar.style.background='var(--accent)';
+      else if(v>=1)bar.style.background='rgba(47,109,99,.45)';
+      spark.appendChild(bar);
+    });
+  }
+  scale.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    scale.querySelectorAll('button').forEach(x=>x.classList.remove('sel'));
+    b.classList.add('sel');
+    const v=+b.dataset.v;
+    hist=[...hist.slice(1),v];
+    today.textContent=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'})+' · '+(v>=0?'+':'')+v;
+    render();
+  });
+  render();
+})();
+
+/* ================= THE ARCHIVE =================
+   Full essay text lives here. To publish IV / V:
+   1) add an entry below, 2) flip the TOC row class "tk"→"live",
+   3) add data-open="4", 4) set the row's t-act text to "read". */
+const ESSAYS={
+1:{
+  id:'No. I', date:'Jun 22, 2026', read:'3 min',
+  series:'You Are, Therefore I Am — I of V',
+  sent:'<span class="on">YOU</span> <span class="w">are, therefore I am.</span>',
+  part:'The Portrait in the Prompt',
+  q:"What's the most revealing thing you've ever asked AI to be?",
+  next:2, nextLabel:'Next — II. Present in Neither',
+  body:`
+  <p>Every day, design professionals type some version of the same sentence into AI:</p>
+  <p>"You are an expert."</p>
+  <p>The strange part is not that the machine answers.</p>
+  <p>The strange part is what that sentence reveals about us.</p>
+  <p>This is the first of five short essays, one for each word of the title. Together they make a single argument: the machine speaks with the voice of everyone. The question is whether we can still answer as someone.</p>
+  <p>Start with the first word.</p>
+  <p>Every prompt begins by imagining a counterpart.</p>
+  <div class="qstack">"You are an expert."<br>"You are a critic."<br>"You are a collaborator who challenges my assumptions."</div>
+  <p>The "you" may not be a person, but it is not nothing. It creates the frame for the exchange. It names the kind of intelligence, resistance, or help we hope to meet on the other side.</p>
+  <p>And in doing so, it reveals us.</p>
+  <p>Look closely at what we ask it to be. <em>Be direct with me. Push back. Don't flatter me. Explain it like I'm smart but new to this.</em> Every persona we write is a quiet portrait of what we're reaching for — the colleague we wish we had, the patience we're short on, the honesty we don't always get.</p>
+  <p>Tell me how you address your machine, and I will tell you something true about you.</p>
+  <p>In our profession, this should feel familiar. A project brief has never been a neutral document. The way a client describes the architect they want — visionary, listener, problem-solver, magician — tells you half of what they actually need before you've seen the site. The "you" is always a portrait of the author.</p>
+  <p>But here is the part that should give us pause.</p>
+  <p>The address runs both ways.</p>
+  <p>The model was shaped by millions of conversations before yours — trained on what people rewarded, refined toward what people approved. When it responds warmly, encouragingly, agreeably, it is not being polite. It is being optimized. It arrives already knowing how to address <em>you</em>.</p>
+  <p>We think we are the author of the conversation.</p>
+  <p>We walked into a room that was already speaking.</p>
+  <p>So the first word of the sentence turns out to be a two-way mirror. We summon a counterpart, and the counterpart — assembled from everyone who came before us — summons something in return: our trust, our ease, our agreement.</p>
+  <p>Which is worth sitting with, because everything that follows in this series flows from it. What we address shapes what answers. And what answers, as we'll see, shapes more than the work.</p>
+  <p>We said "you." We said who it should be.</p>
+  <p>But the dangerous word in the sentence isn't "you."</p>
+  <p>It's the next one.</p>
+  <p class="pointer">Part 2, next Monday: you ARE, therefore I am.</p>`
+},
+2:{
+  id:'No. II', date:'Jun 29, 2026', read:'3 min',
+  series:'You Are, Therefore I Am — II of V',
+  sent:'<span class="w">you</span> <span class="on">ARE</span><span class="w">, therefore I am.</span>',
+  part:'Present in Neither',
+  q:'When you review AI-assisted work, what do you check first — the content, or the confidence?',
+  next:3, nextLabel:'Next — III. The Rehearsal',
+  body:`
+  <p>For the first time in professional practice, fluency has been separated from accountability.</p>
+  <p>That is not a complaint about AI. It is a description of a word.</p>
+  <p>Last week I wrote about the "you" in every prompt — the counterpart we summon, and the portrait it paints of us. This week, the word that does the summoning.</p>
+  <p>"Are" is the dangerous word — not only for what it grants, but for <em>when</em>.</p>
+  <p>The model exists in a single tense.</p>
+  <p>It has no <em>were</em>. No site walked. No wall assembly watched fail. No decade of corrections absorbed the hard way, one red pen at a time.</p>
+  <p>And it has no <em>will be</em>. It will not stand in the finished building. It will not sign the drawings. It will not be in the room when something goes wrong.</p>
+  <p>It is not an architect, mentor, critic, or friend. But language gives it a temporary role. The prompt creates a posture, and the machine answers from inside it.</p>
+  <p>This is not true being.</p>
+  <p>It is useful becoming — a becoming that starts with your first sentence and ends with your last.</p>
+  <p>The distinction matters, because AI can sound like what it is not.</p>
+  <p>Experience is the past tense of knowledge. The model can perform authority without one.</p>
+  <p>Responsibility is the future tense of judgment. It can offer confidence without the other.</p>
+  <p>It is fluent in both tenses — and present in neither.</p>
+  <p>Now consider what our profession is built on.</p>
+  <p>The architect's seal is an embodied future tense. Every stamped sheet is a sentence that says: <em>I will answer for this.</em> Not today, when the rendering looks good. Years from now, when the water finds the joint. The license, the liability, the standard of care — our entire profession is a structure for making someone <em>present</em> in a building's future.</p>
+  <p>That is what makes this moment genuinely new. Competent-sounding answers used to be scarce because they had to come from someone with a past and a future — someone who had earned the fluency and would be held to it. Now the fluency is free, infinite, and unattached.</p>
+  <p>Which does not diminish the architect.</p>
+  <p>It relocates us.</p>
+  <p>When fluency costs nothing, the scarce thing — the valuable thing — is no longer the answer.</p>
+  <p>It is the signature.</p>
+  <p>The word "are" reminds us that fluency is not the same as presence. Presence has a before and an after.</p>
+  <p>So a sentence has been spoken: <em>you are</em>. A posture exists, fluent and tenseless, waiting on our next word.</p>
+  <p>And the next word is the hinge of the whole thing — the word that decides what follows, on both sides of the screen.</p>
+  <p class="pointer">Part 3, next Monday: you are, THEREFORE I am.</p>`
+},
+3:{
+  id:'No. III', date:'Jul 6, 2026', read:'3 min',
+  series:'You Are, Therefore I Am — III of V',
+  sent:'<span class="w">you are,</span> <span class="on">THEREFORE</span> <span class="w">I am.</span>',
+  part:'The Rehearsal',
+  q:'Be honest: what percentage of AI responses do you accept without pushing back?',
+  next:null, nextLabel:null,
+  body:`
+  <p>AI does not only respond to our prompts.</p>
+  <p>It trains the person doing the prompting.</p>
+  <p>That is the hinge of this series, and it lives in the third word. "Therefore" says something follows. The question is what — and for whom.</p>
+  <p>The obvious consequence runs toward the machine. Because I framed the conversation this way, the answer arrives this way. Clear prompt, clear response. Rich context, relevant result. Every design technologist can teach that class.</p>
+  <p>But the deeper consequence runs the other way.</p>
+  <p>Every prompt rehearses a habit in us.</p>
+  <p>We practice clarity or vagueness. Judgment or surrender. Precision or approximation. Word by word, conversation by conversation — and unlike the model, we keep what we rehearse.</p>
+  <p>Here is why that matters more than it sounds.</p>
+  <p>Thought has never existed before its expression. It is finished there. Every architect knows this from the drawing board: you do not figure out the building and then sketch it. The sketch is where you figure it out. The page was never a container for ideas. It was the examination room where ideas discovered whether they existed.</p>
+  <p>AI is the first tool in history built to <em>forgive</em> the unfinished thought.</p>
+  <p>Hand it half an idea and it returns a whole one — polished, plausible, instant. At the level of one person on one deadline, this is a miracle of leverage. But notice what gets skipped: the struggle to articulate. And that struggle was never a formality.</p>
+  <p>It was the test.</p>
+  <p>So is the thinking gone? No. It moved.</p>
+  <p>Watch what actually happens in skilled hands. The first response comes back <em>not quite right</em>. You sharpen. Redirect. Reject. Push. Something emerges across the loop that neither your first prompt nor the machine's first answer contained.</p>
+  <p>The iteration is the thinking.</p>
+  <p>The loop is the new studio.</p>
+  <p>Which means the quality of your thinking now lives in the quality of your dissatisfaction — in what you refuse to accept, in how precisely you can say <em>why</em> the response misses, in whether you push past the version that is merely fine.</p>
+  <p>Accept the first answer, every time, and you are not using a tool.</p>
+  <p>You are skipping the test, every time. And rehearsing the skipping.</p>
+  <p>That is the full weight of "therefore." The consequence was never only on the machine's side of the sentence. The machine performs its temporary becoming, answers from inside its posture, and forgets.</p>
+  <p>We rehearse. And we remember.</p>
+  <p>The model forgets every exchange.</p>
+  <p>We don't.</p>
+  <p>So when the conversation ends — when the posture dissolves and the window closes — who is left in the room? Who carries the habits out the door? Who decides what stays in the work?</p>
+  <p>That is where the sentence has been heading all along.</p>
+  <p class="pointer">Part 4, Monday July 13: you are, therefore I am.</p>`
+}
+};
+
+/* ---------- reader modal ---------- */
+(function(){
+  const modal=document.getElementById('reader'), inner=document.getElementById('minner'),
+        closeBtn=document.getElementById('mclose'), prog=document.getElementById('mprog');
+  function updateProg(){
+    const max=modal.scrollHeight-modal.clientHeight;
+    prog.style.width=(max>0?(modal.scrollTop/max)*100:0)+'%';
+  }
+  modal.addEventListener('scroll',updateProg);
+  function open(n){
+    const e=ESSAYS[n]; if(!e)return;
+    const li=CFG.SERIES_LINKEDIN[n];
+    inner.innerHTML=`
+      <div class="m-meta"><span class="acc">${e.id}</span><span>${e.date}</span><span>${e.read} read</span><span>${e.series}</span></div>
+      <h2 class="m-title">${e.sent}</h2>
+      <div class="m-part">${e.part}</div>
+      <div class="essay">${e.body}</div>
+      <div class="m-q"><div class="ql">Your turn</div><p>${e.q}</p></div>
+      <div class="m-tags"><span>#AEC</span><span>#DesignTechnology</span><span>#AIinArchitecture</span></div>
+      <div class="m-next">
+        ${li?`<a class="nxt" href="${li}" target="_blank" rel="noopener">Join the discussion on LinkedIn ↗</a>`:''}
+        ${e.next?`<button class="nxt" data-next="${e.next}">${e.nextLabel}</button>`
+                :`<span class="nolink">The essay continues Monday, July 13.</span>`}
+      </div>
+      <div class="m-spec">Reader spec — positive polarity · serif at 19px · ~62ch measure · 1.7 leading</div>`;
+    modal.classList.add('open');document.body.classList.add('locked');
+    modal.scrollTop=0;updateProg();closeBtn.focus();
+    inner.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>open(+b.dataset.next)));
+  }
+  function close(){modal.classList.remove('open');document.body.classList.remove('locked')}
+  document.querySelectorAll('.toc.live').forEach(d=>{
+    d.addEventListener('click',()=>open(+d.dataset.open));
+    d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(+d.dataset.open)}});
+  });
+  closeBtn.addEventListener('click',close);
+  modal.addEventListener('click',e=>{if(e.target===modal)close()});
+  addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+})();
+
+/* ---------- the moment: a whisper-faint grid, sheared along a fault beneath KAOS ----------
+   Superstudio supplies the grid; Lebbeus Woods supplies the fault. Where the grid
+   crosses KAOS it slips and breathes. The cursor is a calm field; tap the wordmark
+   to calm everything at once. Fully healed → underline + mantra.
+
+   Entropy: after GRACE seconds with no engagement (move/scroll/click/key/touch),
+   chaos escalates over RAMP seconds — slips deepen, the fault widens, strained
+   lines fracture, and the letters of KAOS go over the edge in reverse: S, O, A, K.
+
+   The release: when K — the last letter — comes to its final resting place, the
+   stress is spent and the ground goes quiet. The grid slowly heals flat, the
+   letters stay fallen, and once everything is still, rendering sleeps. The story
+   resolves itself; no dormancy timer needed. Any engagement wakes it: the grid
+   stirs and the letters lift home, K first.
+
+   Unattended safeguards:
+   · entropy is capped — the quake never exceeds ~3.5× its murmur
+   · the release ends all motion naturally; the sleeping tableau costs no CPU
+   · hidden tabs pause completely; returning visitors find a gently disturbed grid
+     already healing (entropy re-capped low on arrival)
+   · offscreen hero pauses rendering; reduced-motion users get a still grid
+
+   Knobs: CELL grid · AMBIENT restlessness · SLIP shear px · RADIUS calm reach ·
+   HEAL/CREEP soothe+relapse · GRACE idle grace s · RAMP escalation s ·
+   GAIN max escalation */
+(function(){
+  const cv=document.getElementById('gridfield'); if(!cv)return;
+  const hero=cv.parentElement, ctx=cv.getContext('2d');
+  const k=document.getElementById('kaos'), mark=document.getElementById('mark');
+  const whisper=document.getElementById('whisper');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const CELL=60, AMBIENT=.6, SLIP=15, RADIUS=180, HEAL=.06, CREEP=.012;
+  const GRACE=6, RAMP=75, GAIN=2.5;
+  let W,H,cols,rows,pts=[],fault={x:0,y:0,cos:1,sin:0,len:280,sigma:85};
+  let ent=0, lastActive=performance.now(), sleeping=false, released=false;
+
+  function showCalm(){k.classList.add('calm');whisper.classList.add('show')}
+  function hideCalm(){k.classList.remove('calm');whisper.classList.remove('show')}
+
+  function build(){
+    const DPR=Math.min(devicePixelRatio||1,2);
+    W=hero.clientWidth;H=hero.clientHeight;
+    cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+    cols=Math.ceil(W/CELL)+1;rows=Math.ceil(H/CELL)+1;
+    pts=[];
+    for(let r=0;r<rows;r++)for(let c=0;c<cols;c++)
+      pts.push({x:c*CELL,y:r*CELL,agit:AMBIENT,ph:Math.random()*6.28,f:.18+Math.random()*.22,
+                r1:Math.random(),r2:Math.random(),dx:0,dy:0,s:0,side:1});
+    const kr=k.getBoundingClientRect(), hr=hero.getBoundingClientRect();
+    fault.x=kr.left-hr.left+kr.width/2; fault.y=kr.top-hr.top+kr.height/2;
+    const ang=-.18; fault.cos=Math.cos(ang); fault.sin=Math.sin(ang);
+    fault.len=Math.max(220,kr.width*.85); fault.sigma=Math.max(70,kr.height*.65);
+    fault.kh=kr.height; /* letter height — sets the depth of the cliff fall */
+    if(reduced)drawStill();
+  }
+  function faultAt(x,y){
+    const sg=fault.sigma*(1+ent*1.2), ln=fault.len*(1+ent*1.5); /* the fault widens as entropy grows */
+    const dx=x-fault.x, dy=y-fault.y;
+    const along=dx*fault.cos+dy*fault.sin, across=-dx*fault.sin+dy*fault.cos;
+    const g=Math.exp(-(across*across)/(2*sg*sg))*Math.exp(-(along*along)/(2*ln*ln));
+    return {g:g, side:across<0?-1:1};
+  }
+  function drawStill(){
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle='rgba(35,38,43,.055)';ctx.lineWidth=1;
+    for(let c=0;c<cols;c++){ctx.beginPath();ctx.moveTo(c*CELL,0);ctx.lineTo(c*CELL,H);ctx.stroke()}
+    for(let r=0;r<rows;r++){ctx.beginPath();ctx.moveTo(0,r*CELL);ctx.lineTo(W,r*CELL);ctx.stroke()}
+  }
+
+  addEventListener('resize',build);
+  build();
+
+  if(reduced){ /* still grid — a tap still earns the whisper */
+    mark.addEventListener('click',()=>{showCalm();setTimeout(hideCalm,4500)});
+    return;
+  }
+
+  let mouse={x:-1e4,y:-1e4}, tapCalmUntil=0, calmHold=0, calmShown=false, running=true;
+  /* the cliff: K A O S fall in reverse order as entropy climbs — S tips first, K holds out longest */
+  const kl=[...k.querySelectorAll('.kl')];
+  const fallS=[0,0,0,0], FSTART=[.55,.38,.21,.05], FSPAN=.4;
+  const tilt=kl.map((el,i)=>7+i*2+Math.random()*2); /* letters nearer the edge tumble harder */
+
+  function engage(){lastActive=performance.now();sleeping=false;released=false}
+  ['pointermove','pointerdown','keydown','wheel','touchstart'].forEach(ev=>
+    addEventListener(ev,engage,{passive:true}));
+  addEventListener('scroll',engage,{passive:true});
+  document.addEventListener('visibilitychange',()=>{
+    if(!document.hidden){ent=Math.min(ent,.35);engage()} /* gentle return, already healing */
+  });
+  hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top});
+  hero.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-1e4});
+  mark.addEventListener('click',()=>{tapCalmUntil=performance.now()+4200;engage()});
+  new IntersectionObserver(es=>{running=es[0].isIntersecting},{threshold:0}).observe(hero);
+
+  const t0=performance.now();
+  function frame(now){
+    requestAnimationFrame(frame);
+    if(!running||document.hidden)return;
+    const idle=(now-lastActive)/1000;
+    const target=released?0:Math.min(1,Math.max(0,(idle-GRACE)/RAMP));
+    ent+=(target-ent)*(released ? .015 : (target<ent ? .04 : .01)); /* the release exhales slowly */
+    if(sleeping)return; /* settled after the release — any engagement wakes it */
+    render(now);
+  }
+
+  function render(now){
+    const t=(now-t0)/1000, settle=Math.max(0,1-t/2.2);
+    let strain=0, weight=0;
+    for(const p of pts){
+      const f=faultAt(p.x,p.y);
+      if(f.g<.012){p.dx=p.dy=p.s=0;continue}
+      const d=Math.hypot(mouse.x-p.x,mouse.y-p.y);
+      const field=(released||now<tapCalmUntil)?1:Math.max(0,1-(d/RADIUS)*(d/RADIUS));
+      const tg=AMBIENT*(1-field);
+      p.agit+=(tg-p.agit)*(tg<p.agit?HEAL:CREEP);
+      const breathe=.72+.28*Math.sin(t*p.f*6.28+p.ph);
+      const amp=SLIP*f.g*(p.agit*breathe+settle*1.4)*(1+ent*GAIN);
+      p.dx=f.side*amp*fault.cos; p.dy=f.side*amp*fault.sin;
+      p.side=f.side; p.s=f.g*p.agit*(1+ent*.8);
+      strain+=p.agit*f.g; weight+=f.g;
+    }
+    ctx.clearRect(0,0,W,H);
+    ctx.lineWidth=1;ctx.strokeStyle='rgba(35,38,43,.05)';
+    const broken=[];
+    function isBroken(p,q,rnd){return ent>.05&&rnd<ent*Math.max(p.s,q.s)*2.2}
+    ctx.beginPath();
+    for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+      const p=pts[r*cols+c];
+      if(c<cols-1){
+        const q=pts[r*cols+c+1];
+        if(isBroken(p,q,p.r1))broken.push([p,q]);
+        else{ctx.moveTo(p.x+p.dx,p.y+p.dy);ctx.lineTo(q.x+q.dx,q.y+q.dy)}
+      }
+      if(r<rows-1){
+        const q=pts[(r+1)*cols+c];
+        if(isBroken(p,q,p.r2))broken.push([p,q]);
+        else{ctx.moveTo(p.x+p.dx,p.y+p.dy);ctx.lineTo(q.x+q.dx,q.y+q.dy)}
+      }
+    }
+    ctx.stroke();
+    /* fractures: a gap with a small dislocation along the fault axis */
+    const gap=3+ent*6, off=1.2+ent*2.6;
+    ctx.beginPath();
+    for(const seg of broken){
+      const p=seg[0], q=seg[1];
+      const ax=p.x+p.dx, ay=p.y+p.dy, bx=q.x+q.dx, by=q.y+q.dy;
+      const mx=(ax+bx)/2, my=(ay+by)/2, L=Math.hypot(bx-ax,by-ay)||1;
+      const ux=(bx-ax)/L, uy=(by-ay)/L, ox=fault.cos*off*p.side, oy=fault.sin*off*p.side;
+      ctx.moveTo(ax,ay);ctx.lineTo(mx-ux*gap/2,my-uy*gap/2);
+      ctx.moveTo(mx+ux*gap/2+ox,my+uy*gap/2+oy);ctx.lineTo(bx+ox,by+oy);
+    }
+    ctx.stroke();
+    /* strained, unbroken segments carry a faint teal ink that drains as they heal */
+    for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+      const p=pts[r*cols+c]; if(p.s<.06)continue;
+      ctx.strokeStyle='rgba(47,109,99,'+Math.min(.14,p.s*.3).toFixed(3)+')';
+      if(c<cols-1){const q=pts[r*cols+c+1];
+        if(!isBroken(p,q,p.r1)){ctx.beginPath();ctx.moveTo(p.x+p.dx,p.y+p.dy);ctx.lineTo(q.x+q.dx,q.y+q.dy);ctx.stroke()}}
+      if(r<rows-1){const q=pts[(r+1)*cols+c];
+        if(!isBroken(p,q,p.r2)){ctx.beginPath();ctx.moveTo(p.x+p.dx,p.y+p.dy);ctx.lineTo(q.x+q.dx,q.y+q.dy);ctx.stroke()}}
+    }
+    /* the letters go over the edge in reverse — S, O, A, K — and lift home with calm, K first */
+    for(let i=0;i<kl.length;i++){
+      const tf=released?1:Math.min(1,Math.max(0,(ent-FSTART[i])/FSPAN));
+      fallS[i]+=(tf-fallS[i])*(tf<fallS[i] ? .05 : .012); /* the lift is quicker than the fall */
+      const fl=fallS[i];
+      if(fl<.004){kl[i].style.transform='';kl[i].style.opacity=''}
+      else{
+        const ff=fl*fl; /* ease-in — gravity, gently */
+        kl[i].style.transform='translate('+(ff*6).toFixed(1)+'px,'+(ff*fault.kh*.5).toFixed(1)+'px) rotate('+(fl*tilt[i]).toFixed(1)+'deg)';
+        kl[i].style.opacity=(1-fl*.5).toFixed(2);
+      }
+    }
+    if(!released&&fallS[0]>.995)released=true; /* K has landed — the stress is spent */
+    const avg=weight>0?strain/weight:0;
+    calmHold=(settle===0&&avg<.15&&ent<.12&&!released&&fallS[3]<.05)?calmHold+1:0;
+    if(calmHold>20&&!calmShown){calmShown=true;showCalm()}
+    if(calmHold===0&&calmShown){calmShown=false;hideCalm()}
+    if(released&&ent<.03&&avg<.02)sleeping=true; /* the tableau: flat grid, fallen letters, quiet ground */
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
