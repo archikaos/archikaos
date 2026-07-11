@@ -881,8 +881,8 @@ const ESSAYS={
    Entropy: after GRACE seconds with no engagement (move/scroll/click/key/touch),
    chaos escalates over RAMP seconds — slips deepen, the fault widens, strained
    lines fracture, and the letters of KAOS go over the edge in reverse: S, O, A, K.
-   S is the early tell — it ignores GRACE and starts tipping within a second of
-   stillness, faster than the rest, so visitors notice the fall begin.
+   The fall is an avalanche on its own idle clock, ignoring GRACE: S tips ~0.6s
+   into stillness, O and A cascade after, and K begins just as S comes to rest.
 
    The release: when K — the last letter — comes to its final resting place, the
    stress is spent and the ground goes quiet. The grid slowly heals flat, the
@@ -1051,18 +1051,18 @@ const ESSAYS={
     ctx.beginPath();
     for(const p of pts){if(p.s<.06)continue;const x=p.x+p.dx,y=p.y+p.dy;ctx.moveTo(x+1.7,y);ctx.arc(x,y,1.7,0,6.2832)}
     ctx.fill();
-    /* the letters go over the edge in reverse — S, O, A, K — and lift home with calm, K first.
-       S is the harbinger: it skips the grace period and tips on idle alone, faster than the
-       rest, so the fall reads before the full quake arrives */
+    /* the avalanche — the letters cascade over the edge in reverse: S tips ~0.6s into
+       stillness, O and A follow, and K begins its fall just as S reaches rest.
+       FDELAY is per-letter idle onset [K,A,O,S]; each falls over FDUR seconds.
+       Any engagement resets idle and the letters lift home. The slow entropy ramp
+       (FSTART/FSPAN) remains as a floor so the quake can still take them. */
     const idle=(now-lastActive)/1000;
+    const FDELAY=[7.5,5.2,2.9,.6], FDUR=6;
     for(let i=0;i<kl.length;i++){
-      let tf=released?1:Math.min(1,Math.max(0,(ent-FSTART[i])/FSPAN));
-      let rate=tf<fallS[i] ? .05 : .012; /* the lift is quicker than the fall */
-      if(i===3){
-        tf=Math.max(tf,released?1:Math.min(1,Math.max(0,(idle-.6)/6)));
-        rate=tf<fallS[i] ? .06 : .035;
-      }
-      fallS[i]+=(tf-fallS[i])*rate;
+      const et=released?1:Math.min(1,Math.max(0,(ent-FSTART[i])/FSPAN));
+      const it=released?1:Math.min(1,Math.max(0,(idle-FDELAY[i])/FDUR));
+      const tf=Math.max(et,it);
+      fallS[i]+=(tf-fallS[i])*(tf<fallS[i] ? .05 : .035); /* the lift is quicker than the fall */
       const fl=fallS[i];
       if(fl<.004){kl[i].style.transform='';kl[i].style.opacity=''}
       else{
