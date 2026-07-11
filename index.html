@@ -349,11 +349,11 @@
       <div>
         <h3>“You Are, Therefore I Am”</h3>
         <p>I inverted Descartes for the age of the prompt, then read the result the way scholars read scripture. One word at a time. There's a word for that too: exegesis. On the surface, it's about what we do to AI. Underneath, it's about what using AI does to us.</p>
-        <p class="epi">“The machine speaks with the voice of everyone. Our work is answering as someone.”</p>
+        <p class="epi">“The machine speaks with the voice of <b>everyone</b>. Our work is answering as <b>someone</b>.”</p>
       </div>
       <div class="series-sched">
-        Five Mondays<br>
-        Jun 22 – Jul 20, 2026
+        Every Monday for Five Mondays<br>
+        Jul 6 – Aug 3, 2026
       </div>
     </div>
 
@@ -362,25 +362,25 @@
         <span class="t-num">I</span>
         <div>
           <div class="t-title">The Portrait in the Prompt</div>
-          <div class="t-sent"><span class="on">YOU</span> are, therefore I am. <span class="t-date">— Jun 22, 2026</span></div>
+          <div class="t-sent"><span class="on">YOU</span> are, therefore I am. <span class="t-date">— Jul 6, 2026</span></div>
         </div>
         <span class="t-act">read</span>
       </div>
-      <div class="toc live reveal" data-open="2" role="button" tabindex="0" aria-label="Read essay two: Present in Neither">
+      <div class="toc tk reveal">
         <span class="t-num">II</span>
         <div>
           <div class="t-title">Present in Neither</div>
-          <div class="t-sent">you <span class="on">ARE</span>, therefore I am. <span class="t-date">— Jun 29, 2026</span></div>
+          <div class="t-sent">you <span class="on">ARE</span>, therefore I am.</div>
         </div>
-        <span class="t-act">read</span>
+        <span class="t-act">forthcoming — Jul 13</span>
       </div>
-      <div class="toc live reveal" data-open="3" role="button" tabindex="0" aria-label="Read essay three: The Rehearsal">
+      <div class="toc tk reveal">
         <span class="t-num">III</span>
         <div>
           <div class="t-title">The Rehearsal</div>
-          <div class="t-sent">you are, <span class="on">THEREFORE</span> I am. <span class="t-date">— Jul 6, 2026</span></div>
+          <div class="t-sent">you are, <span class="on">THEREFORE</span> I am.</div>
         </div>
-        <span class="t-act">read</span>
+        <span class="t-act">forthcoming — Jul 20</span>
       </div>
       <!-- forthcoming — when published: add essay to ESSAYS, swap class "tk"→"live", add data-open, set t-act to "read" -->
       <div class="toc tk reveal">
@@ -389,7 +389,7 @@
           <div class="t-title">The Overrule</div>
           <div class="t-sent">you are, therefore <span class="on">I</span> am.</div>
         </div>
-        <span class="t-act">forthcoming — Jul 13</span>
+        <span class="t-act">forthcoming — Jul 27</span>
       </div>
       <div class="toc tk reveal">
         <span class="t-num">V</span>
@@ -397,7 +397,7 @@
           <div class="t-title">Formation</div>
           <div class="t-sent">you are, therefore I <span class="on">AM</span>.</div>
         </div>
-        <span class="t-act">forthcoming — Jul 20</span>
+        <span class="t-act">forthcoming — Aug 3</span>
       </div>
     </div>
   </div>
@@ -736,12 +736,12 @@ document.querySelectorAll('[data-sub]').forEach(form=>{
    3) add data-open="4", 4) set the row's t-act text to "read". */
 const ESSAYS={
 1:{
-  id:'No. I', date:'Jun 22, 2026', read:'3 min',
+  id:'No. I', date:'Jul 6, 2026', read:'3 min',
   series:'You Are, Therefore I Am — I of V',
   sent:'<span class="on">YOU</span> <span class="w">are, therefore I am.</span>',
   part:'The Portrait in the Prompt',
   q:"What's the most revealing thing you've ever asked AI to be?",
-  next:2, nextLabel:'Next — II. Present in Neither',
+  next:null, nextLabel:null, /* restore next:2 when II publishes Jul 13 */
   body:`
   <p>Every day, design professionals type some version of the same sentence into AI:</p>
   <p>"You are an expert."</p>
@@ -769,7 +769,7 @@ const ESSAYS={
   <p class="pointer">Part 2, next Monday: you ARE, therefore I am.</p>`
 },
 2:{
-  id:'No. II', date:'Jun 29, 2026', read:'3 min',
+  id:'No. II', date:'Jul 13, 2026', read:'3 min',
   series:'You Are, Therefore I Am — II of V',
   sent:'<span class="w">you</span> <span class="on">ARE</span><span class="w">, therefore I am.</span>',
   part:'Present in Neither',
@@ -803,7 +803,7 @@ const ESSAYS={
   <p class="pointer">Part 3, next Monday: you are, THEREFORE I am.</p>`
 },
 3:{
-  id:'No. III', date:'Jul 6, 2026', read:'3 min',
+  id:'No. III', date:'Jul 20, 2026', read:'3 min',
   series:'You Are, Therefore I Am — III of V',
   sent:'<span class="w">you are,</span> <span class="on">THEREFORE</span> <span class="w">I am.</span>',
   part:'The Rehearsal',
@@ -835,7 +835,7 @@ const ESSAYS={
   <p>We don't.</p>
   <p>So when the conversation ends — when the posture dissolves and the window closes — who is left in the room? Who carries the habits out the door? Who decides what stays in the work?</p>
   <p>That is where the sentence has been heading all along.</p>
-  <p class="pointer">Part 4, Monday July 13: you are, therefore I am.</p>`
+  <p class="pointer">Part 4, Monday July 27: you are, therefore I am.</p>`
 }
 };
 
