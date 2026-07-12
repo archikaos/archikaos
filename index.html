@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* calm palette — warm cream ground, warm near-black ink, one desaturated teal accent.
+    /* calm palette: warm cream ground, warm near-black ink, one desaturated teal accent.
        (arousal tracks saturation; blue-greens rate most restorative; fewer colors > "the right" colors) */
     --paper:#f7f3ea;
     --paper-lift:#fdfbf6;
@@ -24,7 +24,7 @@
     --faint:#958d7f;
     --line:rgba(35,38,43,.13);
     --line-soft:rgba(35,38,43,.07);
-    --accent:#2f6d63;        /* deep calm teal — 5.4:1 on paper */
+    --accent:#2f6d63;        /* deep calm teal, 5.4:1 on paper */
     --accent-ink:#24564e;
     --accent-wash:rgba(47,109,99,.08);
     --maxw:1080px;
@@ -128,7 +128,7 @@
   .series-sched{font-size:12px;color:var(--faint);text-align:right;line-height:1.7;white-space:nowrap}
   @media(max-width:760px){.series-sched{text-align:left}}
 
-  /* indented hanging list — numerals sit in the left margin */
+  /* indented hanging list: numerals sit in the left margin */
   .toclist{padding-left:24px;border-left:2px solid var(--line-soft)}
   @media(max-width:640px){.toclist{padding-left:14px}}
   .toc{display:grid;grid-template-columns:40px 1fr auto;gap:16px;align-items:baseline;
@@ -168,7 +168,7 @@
   .mess-pledge{margin-top:26px;border-left:3px solid var(--accent);padding:8px 0 8px 18px;
     font-size:.95rem;color:var(--dim);line-height:2}
   .mess-pledge b{color:var(--accent);font-weight:600}
-  /* the margin — a quiet ruled page to write on */
+  /* the margin: a quiet ruled page to write on */
   .margin-card{background:
       linear-gradient(90deg,transparent 26px,rgba(47,109,99,.25) 26px,rgba(47,109,99,.25) 27px,transparent 27px),
       repeating-linear-gradient(var(--card),var(--card) 31px,rgba(35,38,43,.05) 31px,rgba(35,38,43,.05) 32px);
@@ -191,7 +191,7 @@
   .mess-note{margin-top:12px;font-size:12.5px;color:var(--faint);line-height:1.6}
   .mess-note.ok{color:var(--accent);font-weight:500}
 
-  /* ---------- reader modal — serif long-form, per legibility research ---------- */
+  /* ---------- reader modal: serif long-form, per legibility research ---------- */
   .modal{position:fixed;inset:0;z-index:60;display:none;overflow-y:auto;background:rgba(38,35,30,.6);backdrop-filter:blur(6px)}
   .modal.open{display:block}
   body.locked{overflow:hidden}
@@ -628,7 +628,7 @@
 </div>
 
 <script>
-/* ================= CONFIG — everything you need to wire lives here ================= */
+/* ================= CONFIG: everything you need to wire lives here ================= */
 const CFG = {
   // TODO: paste your list provider's form action to go live.
   // Buttondown:  "https://buttondown.com/api/emails/embed-subscribe/YOUR_USERNAME"
@@ -863,7 +863,7 @@ const ESSAYS={
         ${e.next?`<button class="nxt" data-next="${e.next}">${e.nextLabel}</button>`
                 :`<span class="nolink">The essay continues Monday, July 13.</span>`}
       </div>
-      <div class="m-spec">Reader spec — positive polarity · serif at 19px · ~62ch measure · 1.7 leading</div>`;
+      <div class="m-spec">Reader spec: positive polarity · serif at 19px · ~62ch measure · 1.7 leading</div>`;
     modal.classList.add('open');document.body.classList.add('locked');
     modal.scrollTop=0;updateProg();closeBtn.focus();
     inner.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>open(+b.dataset.next)));
@@ -884,19 +884,19 @@ const ESSAYS={
    to calm everything at once. Fully healed → underline + mantra.
 
    Entropy: after GRACE seconds with no engagement (move/scroll/click/key/touch),
-   chaos escalates over RAMP seconds — slips deepen, the fault widens, strained
+   chaos escalates over RAMP seconds. Slips deepen, the fault widens, strained
    lines fracture, and the letters of KAOS go over the edge in reverse: S, O, A, K.
    The fall is an avalanche on its own idle clock, ignoring GRACE: S tips ~0.6s
    into stillness, O and A cascade after, and K begins just as S comes to rest.
 
-   The release: when K — the last letter — comes to its final resting place, the
+   The release: when K (the last letter) comes to its final resting place, the
    stress is spent and the ground goes quiet. The grid slowly heals flat, the
    letters stay fallen, and once everything is still, rendering sleeps. The story
    resolves itself; no dormancy timer needed. Any engagement wakes it: the grid
    stirs and the letters lift home, K first.
 
    Unattended safeguards:
-   · entropy is capped — the quake never exceeds ~3.5× its murmur
+   · entropy is capped: the quake never exceeds ~3.5× its murmur
    · the release ends all motion naturally; the sleeping tableau costs no CPU
    · hidden tabs pause completely; returning visitors find a gently disturbed grid
      already healing (entropy re-capped low on arrival)
@@ -933,7 +933,7 @@ const ESSAYS={
     fault.x=kr.left-hr.left+kr.width/2; fault.y=kr.top-hr.top+kr.height/2;
     const ang=-.18; fault.cos=Math.cos(ang); fault.sin=Math.sin(ang);
     fault.len=Math.max(220,kr.width*.85); fault.sigma=Math.max(70,kr.height*.65);
-    fault.kh=kr.height; /* letter height — sets the depth of the cliff fall */
+    fault.kh=kr.height; /* letter height, sets the depth of the cliff fall */
     if(reduced)drawStill();
   }
   function faultAt(x,y){
@@ -957,13 +957,13 @@ const ESSAYS={
   addEventListener('resize',build);
   build();
 
-  if(reduced){ /* still grid — a tap still earns the whisper */
+  if(reduced){ /* still grid: a tap still earns the whisper */
     mark.addEventListener('click',()=>{showCalm();setTimeout(hideCalm,4500)});
     return;
   }
 
   let mouse={x:-1e4,y:-1e4}, tapCalmUntil=0, calmHold=0, calmShown=false, running=true;
-  /* the cliff: K A O S fall in reverse order as entropy climbs — S tips first, K holds out longest */
+  /* the cliff: K A O S fall in reverse order as entropy climbs; S tips first, K holds out longest */
   const kl=[...k.querySelectorAll('.kl')];
   const fallS=[0,0,0,0], FSTART=[.55,.38,.21,.05], FSPAN=.4;
   const tilt=kl.map((el,i)=>7+i*2+Math.random()*2); /* letters nearer the edge tumble harder */
@@ -987,7 +987,7 @@ const ESSAYS={
     const idle=(now-lastActive)/1000;
     const target=released?0:Math.min(1,Math.max(0,(idle-GRACE)/RAMP));
     ent+=(target-ent)*(released ? .015 : (target<ent ? .04 : .01)); /* the release exhales slowly */
-    if(sleeping)return; /* settled after the release — any engagement wakes it */
+    if(sleeping)return; /* settled after the release; any engagement wakes it */
     render(now);
   }
 
@@ -1056,7 +1056,7 @@ const ESSAYS={
     ctx.beginPath();
     for(const p of pts){if(p.s<.06)continue;const x=p.x+p.dx,y=p.y+p.dy;ctx.moveTo(x+1.7,y);ctx.arc(x,y,1.7,0,6.2832)}
     ctx.fill();
-    /* the avalanche — the letters cascade over the edge in reverse: S tips ~0.6s into
+    /* the avalanche: the letters cascade over the edge in reverse. S tips ~0.6s into
        stillness, O and A follow, and K begins its fall just as S reaches rest.
        FDELAY is per-letter idle onset [K,A,O,S]; each falls over FDUR seconds.
        Any engagement resets idle and the letters lift home. The slow entropy ramp
@@ -1071,12 +1071,12 @@ const ESSAYS={
       const fl=fallS[i];
       if(fl<.004){kl[i].style.transform='';kl[i].style.opacity=''}
       else{
-        const ff=fl*fl; /* ease-in — gravity, gently */
+        const ff=fl*fl; /* ease-in, gravity, gently */
         kl[i].style.transform='translate('+(ff*6).toFixed(1)+'px,'+(ff*fault.kh*.5).toFixed(1)+'px) rotate('+(fl*tilt[i]).toFixed(1)+'deg)';
         kl[i].style.opacity=(1-fl*.5).toFixed(2);
       }
     }
-    if(!released&&fallS[0]>.995)released=true; /* K has landed — the stress is spent */
+    if(!released&&fallS[0]>.995)released=true; /* K has landed; the stress is spent */
     const avg=weight>0?strain/weight:0;
     calmHold=(settle===0&&avg<.15&&ent<.12&&!released&&fallS[3]<.05)?calmHold+1:0;
     if(calmHold>20&&!calmShown){calmShown=true;showCalm()}
