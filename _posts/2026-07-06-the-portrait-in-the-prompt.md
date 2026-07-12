@@ -1,5 +1,6 @@
 ---
 layout: essay
+title: The Portrait in the Prompt
 num: "No. I"
 read: 3 min
 series: You Are, Therefore I Am (I of V)

@@ -1,5 +1,6 @@
 ---
 layout: essay
+title: Present in Neither
 num: "No. II"
 read: 3 min
 series: You Are, Therefore I Am (II of V)
