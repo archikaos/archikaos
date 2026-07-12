@@ -1,0 +1,94 @@
+/* essay page stylesheet — the reader's typography as a standalone page.
+   source of truth for the essay devices (crescendo, tenseline, seriesword, qstack).
+   palette and type mirror index.html's :root; keep them in sync when the palette changes. */
+
+:root{
+  --paper:#f7f3ea;
+  --paper-lift:#fdfbf6;
+  --card:#ffffff;
+  --ink:#23262b;
+  --body:#33363b;
+  --dim:#655f55;
+  --faint:#958d7f;
+  --line:rgba(35,38,43,.13);
+  --line-soft:rgba(35,38,43,.07);
+  --accent:#2f6d63;
+  --accent-ink:#24564e;
+  --accent-wash:rgba(47,109,99,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--paper);color:var(--body);
+  font-family:'Archivo',system-ui,sans-serif;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+
+/* ---------- chrome ---------- */
+.site-head{max-width:740px;margin:0 auto;padding:26px 24px 0;display:flex;justify-content:space-between;align-items:baseline}
+.site-head .mark{font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;letter-spacing:-.01em;color:var(--ink);text-transform:uppercase}
+.site-head .mark .k{color:var(--accent)}
+.site-head .back{font-size:13.5px;font-weight:500;color:var(--dim);transition:color .2s}
+.site-head .back:hover{color:var(--accent)}
+.site-foot{max-width:740px;margin:0 auto;padding:30px 24px 44px;border-top:1px solid var(--line-soft);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--faint)}
+.site-foot .accent{color:var(--accent)}
+
+/* ---------- article ---------- */
+.reader{max-width:740px;margin:0 auto;padding:44px 24px 40px}
+.r-meta{display:flex;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:var(--faint);margin-bottom:24px;text-transform:uppercase}
+.r-meta .acc{color:var(--accent);font-weight:500}
+.r-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4.5vw,2.6rem);letter-spacing:-.015em;line-height:1.12;margin-bottom:8px;color:var(--ink)}
+.r-title .w{color:var(--faint)}
+.r-title .on{color:var(--accent);font-style:italic}
+.r-part{font-size:13px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:40px}
+
+/* ---------- essay body ---------- */
+.essay p{font-family:'Newsreader',serif;font-size:clamp(1.12rem,1.05rem + .35vw,1.24rem);line-height:1.72;color:var(--body);margin-bottom:1.25em;max-width:62ch}
+.essay p b{font-weight:600;color:var(--ink)}
+.essay p em{color:var(--ink);font-style:italic}
+.essay .qstack{border-left:3px solid var(--accent);padding:10px 0 10px 20px;margin:0 0 1.25em;background:var(--accent-wash);border-radius:0 10px 10px 0;
+  font-family:'Newsreader',serif;font-style:italic;font-size:1.08rem;line-height:1.9;color:var(--dim)}
+.essay .pointer{font-style:italic;color:var(--dim);font-size:1.05rem}
+/* seriesword: the essay's emphasized word in the series' own teal-italic, matching the title mechanic */
+.essay .seriesword{color:var(--accent);font-style:italic;font-weight:500}
+/* crescendo: the stamped line arrives first, full voice and full size, then trails off into
+   its own echo, decreasing in size and strength */
+.essay .crescendo{margin:.3em 0 1.6em;font-family:'Fraunces',serif;font-style:italic}
+.essay .crescendo div{line-height:1}
+.essay .crescendo .c1{font-weight:600;font-size:clamp(1.7rem,4vw,2.3rem);color:var(--ink);line-height:1.05}
+.essay .crescendo .c2{font-weight:500;font-size:1.35rem;color:var(--dim);opacity:.7;margin-top:-.38em;mix-blend-mode:multiply}
+.essay .crescendo .c3{font-weight:500;font-size:1.05rem;color:var(--faint);opacity:.5;margin-top:-.14em;mix-blend-mode:multiply}
+/* tenseline: a Minard band. presence rendered as flow thickness; full width, words at the 80% stations */
+.essay .tenseline{position:relative;margin:.3em 0 0;font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.4rem,3.2vw,1.9rem);
+  display:flex;justify-content:space-between;align-items:baseline;padding:0 10% 26px}
+.essay .tenseline::before{content:"";position:absolute;left:0;right:0;bottom:2px;height:14px;
+  background:linear-gradient(90deg,rgba(47,109,99,.25),var(--accent) 50%,rgba(47,109,99,.25));
+  clip-path:polygon(0 49%,50% 0,100% 49%,100% 51%,50% 100%,0 51%)}
+.essay .tenseline .ghost{font-weight:500;color:var(--faint);opacity:.5}
+.essay .tenseline .solid{font-weight:600;color:var(--ink);font-size:1.25em}
+.essay .tense-labs{display:flex;justify-content:space-between;padding:0 10%;margin:7px 0 3.8em;
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+
+/* ---------- your turn ---------- */
+.r-q{margin-top:40px;border:1px solid var(--accent);background:var(--accent-wash);border-radius:14px;padding:22px 24px}
+.r-q .ql{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:500}
+.r-q p{font-family:'Newsreader',serif;font-size:1.12rem;line-height:1.55;color:var(--ink)}
+.r-q .reminder{display:block;margin-top:8px}
+.r-q .qopts{display:flex;gap:26px;margin-top:12px}
+.r-q .qopts label{display:flex;align-items:center;gap:8px;font-size:1.02rem;color:var(--body);cursor:pointer}
+.r-q .qopts input{width:17px;height:17px;accent-color:var(--accent);cursor:pointer}
+.r-tags{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.05em}
+
+/* ---------- next / prev ---------- */
+.r-next{margin-top:40px;padding-top:26px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.r-next .nxt{font-size:14px;font-weight:600;color:var(--dim);
+  border:1px solid var(--line);border-radius:99px;padding:12px 22px;min-height:48px;display:inline-flex;align-items:center;transition:.25s}
+.r-next .nxt:hover{color:var(--accent);border-color:var(--accent)}
+.r-next .nolink{font-family:'Newsreader',serif;font-style:italic;font-size:1rem;color:var(--dim)}
+@media(max-width:640px){
+  .r-next{flex-direction:column;align-items:stretch}
+  .r-next .nxt{width:100%;justify-content:center}
+}
+.r-spec{margin-top:28px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;color:var(--faint);text-transform:uppercase}

@@ -191,53 +191,6 @@
   .mess-note{margin-top:12px;font-size:12.5px;color:var(--faint);line-height:1.6}
   .mess-note.ok{color:var(--accent);font-weight:500}
 
-  /* ---------- reader modal: serif long-form, per legibility research ---------- */
-  .modal{position:fixed;inset:0;z-index:60;display:none;overflow-y:auto;background:rgba(38,35,30,.6);backdrop-filter:blur(6px)}
-  .modal.open{display:block}
-  body.locked{overflow:hidden}
-  .m-prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:64}
-  .m-close{position:fixed;top:16px;right:16px;z-index:65;font-size:14px;font-weight:600;
-    color:var(--ink);border:1px solid var(--line);background:rgba(255,255,255,.95);border-radius:99px;padding:11px 20px;min-height:44px;cursor:pointer;transition:.25s}
-  .m-close:hover{color:var(--accent);border-color:var(--accent)}
-  .m-inner{max-width:740px;margin:60px auto 96px;padding:58px 60px 60px;position:relative;
-    background:var(--paper);color:var(--ink);border-radius:18px;border-top:3px solid var(--accent);
-    box-shadow:0 30px 80px rgba(20,18,15,.4)}
-  @media(max-width:640px){.m-inner{margin:0;padding:74px 22px 60px;min-height:100vh;border-radius:0}}
-  .m-meta{display:flex;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:var(--faint);margin-bottom:24px;text-transform:uppercase}
-  .m-meta .acc{color:var(--accent);font-weight:500}
-  .m-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4.5vw,2.6rem);letter-spacing:-.015em;line-height:1.12;margin-bottom:8px;color:var(--ink)}
-  .m-title .w{color:var(--faint)}
-  .m-title .on{color:var(--accent);font-style:italic}
-  .m-part{font-size:13px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:40px}
-  .essay p{font-family:'Newsreader',serif;font-size:clamp(1.12rem,1.05rem + .35vw,1.24rem);line-height:1.72;color:var(--body);margin-bottom:1.25em;max-width:62ch}
-  .essay p b{font-weight:600;color:var(--ink)}
-  .essay p em{color:var(--ink);font-style:italic}
-  .essay .qstack{border-left:3px solid var(--accent);padding:10px 0 10px 20px;margin:0 0 1.25em;background:var(--accent-wash);border-radius:0 10px 10px 0;
-    font-family:'Newsreader',serif;font-style:italic;font-size:1.08rem;line-height:1.9;color:var(--dim)}
-  .essay .pointer{font-style:italic;color:var(--dim);font-size:1.05rem}
-  /* crescendo: the stamped line arrives first, full voice and full size, then trails off into
-     its own echo, decreasing in size and strength. negative margins pull each echo up into the
-     one before it; mix-blend-mode lets the faint echoes read as layered ink, not muddy overlap */
-  .essay .crescendo{margin:.3em 0 1.6em;font-family:'Fraunces',serif;font-style:italic}
-  .essay .crescendo div{line-height:1}
-  .essay .crescendo .c1{font-weight:600;font-size:clamp(1.7rem,4vw,2.3rem);color:var(--ink);line-height:1.05}
-  .essay .crescendo .c2{font-weight:500;font-size:1.35rem;color:var(--dim);opacity:.7;margin-top:-.38em;mix-blend-mode:multiply}
-  .essay .crescendo .c3{font-weight:500;font-size:1.05rem;color:var(--faint);opacity:.5;margin-top:-.14em;mix-blend-mode:multiply}
-  .m-q{margin-top:40px;border:1px solid var(--accent);background:var(--accent-wash);border-radius:14px;padding:22px 24px}
-  .m-q .ql{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:500}
-  .m-q p{font-family:'Newsreader',serif;font-size:1.12rem;line-height:1.55;color:var(--ink)}
-  .m-q .reminder{display:block;margin-top:8px}
-  .m-tags{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.05em}
-  .m-next{margin-top:40px;padding-top:26px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-  .m-next .nxt{font-size:14px;font-weight:600;color:var(--dim);cursor:pointer;
-    border:1px solid var(--line);border-radius:99px;padding:12px 22px;min-height:48px;transition:.25s;background:transparent;font-family:'Archivo',sans-serif}
-  .m-next .nxt:hover{color:var(--accent);border-color:var(--accent)}
-  .m-next .nolink{font-family:'Newsreader',serif;font-style:italic;font-size:1rem;color:var(--dim)}
-  @media(max-width:640px){
-    .m-next{flex-direction:column;align-items:stretch}
-    .m-next .nxt{width:100%;text-align:center}
-  }
-  .m-spec{margin-top:28px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;color:var(--faint);text-transform:uppercase}
 
   /* ---------- books ---------- */
   .shelf{display:grid;grid-template-columns:1fr 1fr;gap:44px}
@@ -357,7 +310,7 @@
     <div class="series-card reveal">
       <div>
         <h3>“You Are, Therefore I Am”</h3>
-        <p>I inverted Descartes for the age of the prompt, then read the result the way scholars read scripture. One word at a time. There's a word for that too: exegesis. On the surface, it's about what we do to AI. Underneath, it's about what using AI does to us.</p>
+        <p>I inverted Descartes for the age of the prompt, then read the result the way scholars read scripture. One word at a time. There's a word for that too: exegesis. (A thought tool that has earned its own essay, coming after the series.) On the surface, it's about what we do to AI. Underneath, it's about what using AI does to us.</p>
         <p class="epi">“The machine speaks with the voice of <b>everyone</b>. Our work is answering as <b>someone</b>.”</p>
       </div>
       <div class="series-sched">
@@ -367,14 +320,14 @@
     </div>
 
     <div id="toclist" class="toclist">
-      <div class="toc live reveal" data-open="1" role="button" tabindex="0" aria-label="Read essay one: The Portrait in the Prompt">
+      <a class="toc live reveal" href="/essays/the-portrait-in-the-prompt/">
         <span class="t-num">I</span>
         <div>
           <div class="t-title">The Portrait in the Prompt</div>
           <div class="t-sent"><span class="on">YOU</span> are, therefore I am. <span class="t-date">· Jul 6, 2026</span></div>
         </div>
         <span class="t-act">read</span>
-      </div>
+      </a>
       <div class="toc tk reveal">
         <span class="t-num">II</span>
         <div>
@@ -391,7 +344,9 @@
         </div>
         <span class="t-act">forthcoming, Jul 20</span>
       </div>
-      <!-- forthcoming: when published, add essay to ESSAYS, swap class "tk"→"live", add data-open, set t-act to "read" -->
+      <!-- forthcoming: essays live in _posts/. To publish: the post renders automatically on the first
+           push on/after its date; here, swap the row's div for an <a class="toc live reveal" href="/essays/<slug>/">,
+           add the t-date, set t-act to "read". See .claude/skills/publish-essay. -->
       <div class="toc tk reveal">
         <span class="t-num">IV</span>
         <div>
@@ -629,12 +584,6 @@
   <span>set in Fraunces &amp; Newsreader</span>
 </footer>
 
-<!-- ============ READER MODAL ============ -->
-<div class="modal" id="reader" role="dialog" aria-modal="true" aria-label="Essay reader">
-  <div class="m-prog" id="mprog"></div>
-  <button class="m-close" id="mclose">Close ✕</button>
-  <div class="m-inner" id="minner"></div>
-</div>
 
 <script>
 /* ================= CONFIG: everything you need to wire lives here ================= */
@@ -649,9 +598,8 @@ const CFG = {
   CONTACT_EMAIL: "hello@archikaos.com",            // TODO: replace with your real address
   LINKEDIN: "https://www.linkedin.com/in/jordan-billingsley/",
   BOOK_AGENTIC: "https://www.amazon.com/dp/1041167075",
-  BOOK_SUPERUSERS: "https://www.goodreads.com/en/book/show/41861813-superusers",
-  // TODO: after each Monday post, paste the LinkedIn post URL to add a "join the discussion" link.
-  SERIES_LINKEDIN: { 1:"", 2:"", 3:"" }
+  BOOK_SUPERUSERS: "https://www.goodreads.com/en/book/show/41861813-superusers"
+  // per-essay "join the discussion" LinkedIn links now live in each post's front matter (linkedin: <url>)
 };
 
 /* ---------- wire config into the page ---------- */
@@ -737,152 +685,6 @@ document.querySelectorAll('[data-sub]').forEach(form=>{
     render();
   });
   render();
-})();
-
-/* ================= THE ARCHIVE =================
-   Full essay text lives here. To publish IV / V:
-   1) add an entry below, 2) flip the TOC row class "tk"→"live",
-   3) add data-open="4", 4) set the row's t-act text to "read". */
-const ESSAYS={
-1:{
-  id:'No. I', date:'Jul 6, 2026', read:'3 min',
-  series:'You Are, Therefore I Am (I of V)',
-  sent:'<span class="on">YOU</span> <span class="w">are, therefore I am.</span>',
-  part:'The Portrait in the Prompt',
-  q:"What's the most revealing thing you've ever asked AI to be?<span class=\"reminder\">Remember, everything is a mirror.</span>",
-  next:null, nextLabel:null, /* restore next:2 when II publishes Jul 13 */
-  body:`
-  <p>Every day, millions of us type some version of the same sentence into AI:</p>
-  <div class="crescendo"><div class="c1">You are an expert.</div><div class="c2">You are an expert.</div><div class="c3">You are an expert.</div></div>
-  <p>The strange part is not that the machine answers.<br>The strange part is what that sentence reveals about us.</p>
-  <p>This is the first of five short essays, one for each word of the title. Together they make a single argument: the machine speaks with the voice of everyone. The question is whether we can still answer as someone.</p>
-  <p>Starting with the first word.</p>
-  <p>Every prompt begins by imagining a counterpart.</p>
-  <div class="qstack">"You are a mentor who has seen this mistake before."<br>"You are a critic who cares more about the work than my feelings."<br>"You are a collaborator who challenges my assumptions."</div>
-  <p>The "you" may not be a person, but it is certainly not nothing. It creates the frame for the exchange. It names the kind of intelligence, resistance, or help we hope to meet on the other side.</p>
-  <p>And in doing so, it reveals us.</p>
-  <p>Look closely at what we ask it to be. <b><em>Be direct with me. Push back. Don't flatter me. Explain it like I'm smart but new to this.</em></b> Every persona we write is a quiet portrait of what we're reaching for: the colleague we wish we had, the patience we're short on, the honesty we don't always get.</p>
-  <p>Tell me how you address your machine, and I will tell you something true about you.</p>
-  <p>In our profession, this should feel familiar. A project brief has never been a neutral document. The way a client describes the architect they want (visionary, listener, problem-solver, magician) tells you half of what they actually need before you've seen the site. The "you" is always a portrait of the author.</p>
-  <p>But here is the part that should give us pause.</p>
-  <p>The address runs both ways.</p>
-  <p>The model was shaped by millions of conversations before yours. It was trained on what people rewarded, refined toward what people approved. When it responds warmly, encouragingly, agreeably, it is not being polite. It is being optimized. It arrives already knowing how to address <em>you</em>.</p>
-  <p>We think we are the author of the conversation.<br>We walked into a room that was already speaking.</p>
-  <p>So the first word of the sentence turns out to be a two-way mirror. We summon a counterpart, and the counterpart (assembled from everyone who came before us) summons something in return: our trust, our ease, our agreement.</p>
-  <p>Which is worth sitting with, because everything that follows in this series flows from it. What we address shapes what answers. And what answers shapes more than the work.</p>
-  <p>We said "you." We said who it should be.</p>
-  <p>But the dangerous word in the sentence isn't "you."</p>
-  <p>It's the next one.</p>
-  <p class="pointer">Part 2, next Monday: you ARE, therefore I am.</p>`
-},
-2:{
-  id:'No. II', date:'Jul 13, 2026', read:'3 min',
-  series:'You Are, Therefore I Am (II of V)',
-  sent:'<span class="w">you</span> <span class="on">ARE</span><span class="w">, therefore I am.</span>',
-  part:'Present in Neither',
-  q:'When you review AI-assisted work, what do you check first — the content, or the confidence?',
-  next:3, nextLabel:'Next — III. The Rehearsal',
-  body:`
-  <p>For the first time in professional practice, fluency has been separated from accountability.</p>
-  <p>That is not a complaint about AI. It is a description of a word.</p>
-  <p>Last week I wrote about the "you" in every prompt — the counterpart we summon, and the portrait it paints of us. This week, the word that does the summoning.</p>
-  <p>"Are" is the dangerous word — not only for what it grants, but for <em>when</em>.</p>
-  <p>The model exists in a single tense.</p>
-  <p>It has no <em>were</em>. No site walked. No wall assembly watched fail. No decade of corrections absorbed the hard way, one red pen at a time.</p>
-  <p>And it has no <em>will be</em>. It will not stand in the finished building. It will not sign the drawings. It will not be in the room when something goes wrong.</p>
-  <p>It is not an architect, mentor, critic, or friend. But language gives it a temporary role. The prompt creates a posture, and the machine answers from inside it.</p>
-  <p>This is not true being.</p>
-  <p>It is useful becoming — a becoming that starts with your first sentence and ends with your last.</p>
-  <p>The distinction matters, because AI can sound like what it is not.</p>
-  <p>Experience is the past tense of knowledge. The model can perform authority without one.</p>
-  <p>Responsibility is the future tense of judgment. It can offer confidence without the other.</p>
-  <p>It is fluent in both tenses — and present in neither.</p>
-  <p>Now consider what our profession is built on.</p>
-  <p>The architect's seal is an embodied future tense. Every stamped sheet is a sentence that says: <em>I will answer for this.</em> Not today, when the rendering looks good. Years from now, when the water finds the joint. The license, the liability, the standard of care — our entire profession is a structure for making someone <em>present</em> in a building's future.</p>
-  <p>That is what makes this moment genuinely new. Competent-sounding answers used to be scarce because they had to come from someone with a past and a future — someone who had earned the fluency and would be held to it. Now the fluency is free, infinite, and unattached.</p>
-  <p>Which does not diminish the architect.</p>
-  <p>It relocates us.</p>
-  <p>When fluency costs nothing, the scarce thing — the valuable thing — is no longer the answer.</p>
-  <p>It is the signature.</p>
-  <p>The word "are" reminds us that fluency is not the same as presence. Presence has a before and an after.</p>
-  <p>So a sentence has been spoken: <em>you are</em>. A posture exists, fluent and tenseless, waiting on our next word.</p>
-  <p>And the next word is the hinge of the whole thing — the word that decides what follows, on both sides of the screen.</p>
-  <p class="pointer">Part 3, next Monday: you are, THEREFORE I am.</p>`
-},
-3:{
-  id:'No. III', date:'Jul 20, 2026', read:'3 min',
-  series:'You Are, Therefore I Am (III of V)',
-  sent:'<span class="w">you are,</span> <span class="on">THEREFORE</span> <span class="w">I am.</span>',
-  part:'The Rehearsal',
-  q:'Be honest: what percentage of AI responses do you accept without pushing back?',
-  next:null, nextLabel:null,
-  body:`
-  <p>AI does not only respond to our prompts.</p>
-  <p>It trains the person doing the prompting.</p>
-  <p>That is the hinge of this series, and it lives in the third word. "Therefore" says something follows. The question is what — and for whom.</p>
-  <p>The obvious consequence runs toward the machine. Because I framed the conversation this way, the answer arrives this way. Clear prompt, clear response. Rich context, relevant result. Every design technologist can teach that class.</p>
-  <p>But the deeper consequence runs the other way.</p>
-  <p>Every prompt rehearses a habit in us.</p>
-  <p>We practice clarity or vagueness. Judgment or surrender. Precision or approximation. Word by word, conversation by conversation — and unlike the model, we keep what we rehearse.</p>
-  <p>Here is why that matters more than it sounds.</p>
-  <p>Thought has never existed before its expression. It is finished there. Every architect knows this from the drawing board: you do not figure out the building and then sketch it. The sketch is where you figure it out. The page was never a container for ideas. It was the examination room where ideas discovered whether they existed.</p>
-  <p>AI is the first tool in history built to <em>forgive</em> the unfinished thought.</p>
-  <p>Hand it half an idea and it returns a whole one — polished, plausible, instant. At the level of one person on one deadline, this is a miracle of leverage. But notice what gets skipped: the struggle to articulate. And that struggle was never a formality.</p>
-  <p>It was the test.</p>
-  <p>So is the thinking gone? No. It moved.</p>
-  <p>Watch what actually happens in skilled hands. The first response comes back <em>not quite right</em>. You sharpen. Redirect. Reject. Push. Something emerges across the loop that neither your first prompt nor the machine's first answer contained.</p>
-  <p>The iteration is the thinking.</p>
-  <p>The loop is the new studio.</p>
-  <p>Which means the quality of your thinking now lives in the quality of your dissatisfaction — in what you refuse to accept, in how precisely you can say <em>why</em> the response misses, in whether you push past the version that is merely fine.</p>
-  <p>Accept the first answer, every time, and you are not using a tool.</p>
-  <p>You are skipping the test, every time. And rehearsing the skipping.</p>
-  <p>That is the full weight of "therefore." The consequence was never only on the machine's side of the sentence. The machine performs its temporary becoming, answers from inside its posture, and forgets.</p>
-  <p>We rehearse. And we remember.</p>
-  <p>The model forgets every exchange.</p>
-  <p>We don't.</p>
-  <p>So when the conversation ends — when the posture dissolves and the window closes — who is left in the room? Who carries the habits out the door? Who decides what stays in the work?</p>
-  <p>That is where the sentence has been heading all along.</p>
-  <p class="pointer">Part 4, Monday July 27: you are, therefore I am.</p>`
-}
-};
-
-/* ---------- reader modal ---------- */
-(function(){
-  const modal=document.getElementById('reader'), inner=document.getElementById('minner'),
-        closeBtn=document.getElementById('mclose'), prog=document.getElementById('mprog');
-  function updateProg(){
-    const max=modal.scrollHeight-modal.clientHeight;
-    prog.style.width=(max>0?(modal.scrollTop/max)*100:0)+'%';
-  }
-  modal.addEventListener('scroll',updateProg);
-  function open(n){
-    const e=ESSAYS[n]; if(!e)return;
-    const li=CFG.SERIES_LINKEDIN[n];
-    inner.innerHTML=`
-      <div class="m-meta"><span class="acc">${e.id}</span><span>${e.date}</span><span>${e.read} read</span><span>${e.series}</span></div>
-      <h2 class="m-title">${e.sent}</h2>
-      <div class="m-part">${e.part}</div>
-      <div class="essay">${e.body}</div>
-      <div class="m-q"><div class="ql">Your turn</div><p>${e.q}</p></div>
-      <div class="m-tags"><span>#AEC</span><span>#DesignTechnology</span><span>#AIinArchitecture</span></div>
-      <div class="m-next">
-        ${li?`<a class="nxt" href="${li}" target="_blank" rel="noopener">Join the discussion on LinkedIn ↗</a>`:''}
-        ${e.next?`<button class="nxt" data-next="${e.next}">${e.nextLabel}</button>`
-                :`<span class="nolink">The essay continues Monday, July 13.</span>`}
-      </div>
-      <div class="m-spec">Reader spec: positive polarity · serif at 19px · ~62ch measure · 1.7 leading</div>`;
-    modal.classList.add('open');document.body.classList.add('locked');
-    modal.scrollTop=0;updateProg();closeBtn.focus();
-    inner.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>open(+b.dataset.next)));
-  }
-  function close(){modal.classList.remove('open');document.body.classList.remove('locked')}
-  document.querySelectorAll('.toc.live').forEach(d=>{
-    d.addEventListener('click',()=>open(+d.dataset.open));
-    d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(+d.dataset.open)}});
-  });
-  closeBtn.addEventListener('click',close);
-  modal.addEventListener('click',e=>{if(e.target===modal)close()});
-  addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 })();
 
 /* ---------- the moment: a whisper-faint grid, sheared along a fault beneath KAOS ----------

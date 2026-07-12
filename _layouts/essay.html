@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.part }} | ARCHIKAOS</title>
+<meta name="description" content="{{ page.summary | default: site.description }}">
+<meta property="og:title" content="{{ page.part }} | ARCHIKAOS">
+<meta property="og:description" content="{{ page.summary | default: site.description }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<link rel="alternate" type="application/atom+xml" title="ARCHIKAOS essays" href="{{ '/feed.xml' | absolute_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/essay.css' | relative_url }}">
+</head>
+<body>
+
+<header class="site-head">
+  <a class="mark" href="{{ '/' | relative_url }}">ARCHI<span class="k">KAOS</span></a>
+  <a class="back" href="{{ '/#writing' | relative_url }}">All essays</a>
+</header>
+
+<main class="reader">
+  <div class="r-meta"><span class="acc">{{ page.num }}</span><span>{{ page.date | date: "%b %-d, %Y" }}</span><span>{{ page.read }} read</span><span>{{ page.series }}</span></div>
+  <h1 class="r-title">{{ page.sent }}</h1>
+  <div class="r-part">{{ page.part }}</div>
+  <div class="essay">
+    {{ content }}
+  </div>
+  <div class="r-q"><div class="ql">Your turn</div><p>{{ page.q }}</p></div>
+  <div class="r-tags"><span>#AEC</span><span>#DesignTechnology</span><span>#AIinArchitecture</span></div>
+  <div class="r-next">
+    {% if page.linkedin %}<a class="nxt" href="{{ page.linkedin }}" target="_blank" rel="noopener">Join the discussion on LinkedIn ↗</a>{% endif %}
+    {% if page.next %}<a class="nxt" href="{{ page.next.url | relative_url }}">Next: {{ page.next.num }}. {{ page.next.part }}</a>
+    {% elsif page.next_tease %}<span class="nolink">{{ page.next_tease }}</span>{% endif %}
+  </div>
+  <div class="r-spec">Reader spec: positive polarity · serif at 19px · ~62ch measure · 1.7 leading</div>
+</main>
+
+<footer class="site-foot">
+  <span>ARCHIKAOS © {{ 'now' | date: "%Y" }} Jordan Billingsley</span>
+  <span><span class="accent">·</span> sharing thoughts, no ads, connect for more</span>
+</footer>
+
+</body>
+</html>

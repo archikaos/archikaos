@@ -1,0 +1,21 @@
+title: ARCHIKAOS
+description: One less mess. Calm writing on design technology, AI, and the practice of architecture, by Jordan Billingsley.
+url: "https://archikaos.com"
+author: Jordan Billingsley
+timezone: America/New_York
+
+# essays are posts; future-dated posts stay hidden until a rebuild on/after their date
+future: false
+permalink: /essays/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+# keep the hand-crafted homepage and project files out of Jekyll processing
+exclude:
+  - CLAUDE.md
+  - README.md
