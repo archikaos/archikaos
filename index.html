@@ -215,10 +215,18 @@
   .essay .qstack{border-left:3px solid var(--accent);padding:10px 0 10px 20px;margin:0 0 1.25em;background:var(--accent-wash);border-radius:0 10px 10px 0;
     font-family:'Newsreader',serif;font-style:italic;font-size:1.08rem;line-height:1.9;color:var(--dim)}
   .essay .pointer{font-style:italic;color:var(--dim);font-size:1.05rem}
+  /* crescendo: the stamped line arrives first, full voice and full size, then trails off into
+     its own echo, decreasing in size and strength. negative margins pull each echo up into the
+     one before it; mix-blend-mode lets the faint echoes read as layered ink, not muddy overlap */
+  .essay .crescendo{margin:.3em 0 1.6em;font-family:'Fraunces',serif;font-style:italic}
+  .essay .crescendo div{line-height:1}
+  .essay .crescendo .c1{font-weight:600;font-size:clamp(1.7rem,4vw,2.3rem);color:var(--ink);line-height:1.05}
+  .essay .crescendo .c2{font-weight:500;font-size:1.35rem;color:var(--dim);opacity:.7;margin-top:-.38em;mix-blend-mode:multiply}
+  .essay .crescendo .c3{font-weight:500;font-size:1.05rem;color:var(--faint);opacity:.5;margin-top:-.14em;mix-blend-mode:multiply}
   .m-q{margin-top:40px;border:1px solid var(--accent);background:var(--accent-wash);border-radius:14px;padding:22px 24px}
   .m-q .ql{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:500}
   .m-q p{font-family:'Newsreader',serif;font-size:1.12rem;line-height:1.55;color:var(--ink)}
-  .m-q .reminder{display:block;margin-top:8px;font-style:italic;font-size:.92rem;color:var(--dim)}
+  .m-q .reminder{display:block;margin-top:8px}
   .m-tags{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--faint);letter-spacing:.05em}
   .m-next{margin-top:40px;padding-top:26px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
   .m-next .nxt{font-size:14px;font-weight:600;color:var(--dim);cursor:pointer;
@@ -741,16 +749,16 @@ const ESSAYS={
   series:'You Are, Therefore I Am (I of V)',
   sent:'<span class="on">YOU</span> <span class="w">are, therefore I am.</span>',
   part:'The Portrait in the Prompt',
-  q:"What's the most revealing thing you've ever asked AI to be?<span class=\"reminder\">(everything is a mirror)</span>",
+  q:"What's the most revealing thing you've ever asked AI to be?<span class=\"reminder\">Remember, everything is a mirror.</span>",
   next:null, nextLabel:null, /* restore next:2 when II publishes Jul 13 */
   body:`
   <p>Every day, millions of us type some version of the same sentence into AI:</p>
-  <p>You are an expert.</p>
+  <div class="crescendo"><div class="c1">You are an expert.</div><div class="c2">You are an expert.</div><div class="c3">You are an expert.</div></div>
   <p>The strange part is not that the machine answers.<br>The strange part is what that sentence reveals about us.</p>
   <p>This is the first of five short essays, one for each word of the title. Together they make a single argument: the machine speaks with the voice of everyone. The question is whether we can still answer as someone.</p>
   <p>Starting with the first word.</p>
   <p>Every prompt begins by imagining a counterpart.</p>
-  <div class="qstack">"You are an expert."<br>"You are a critic."<br>"You are a collaborator who challenges my assumptions."</div>
+  <div class="qstack">"You are a mentor who has seen this mistake before."<br>"You are a critic who cares more about the work than my feelings."<br>"You are a collaborator who challenges my assumptions."</div>
   <p>The "you" may not be a person, but it is certainly not nothing. It creates the frame for the exchange. It names the kind of intelligence, resistance, or help we hope to meet on the other side.</p>
   <p>And in doing so, it reveals us.</p>
   <p>Look closely at what we ask it to be. <b><em>Be direct with me. Push back. Don't flatter me. Explain it like I'm smart but new to this.</em></b> Every persona we write is a quiet portrait of what we're reaching for: the colleague we wish we had, the patience we're short on, the honesty we don't always get.</p>
