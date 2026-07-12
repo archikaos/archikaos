@@ -1,0 +1,4 @@
+# studio files must never enter the public site repo
+CLAUDE.md
+.claude/
+drafts/
