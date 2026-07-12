@@ -1,6 +1,8 @@
-/* essay page stylesheet — the reader's typography as a standalone page.
+/* essay reader stylesheet — the focused reading card, used two ways:
+   1) standalone essay pages (/essays/<slug>/): dark ground, floating card, fixed close
+   2) the homepage overlay: the same card fetched into a .modal scrim over the page
    source of truth for the essay devices (crescendo, tenseline, seriesword, qstack).
-   palette and type mirror index.html's :root; keep them in sync when the palette changes. */
+   palette mirrors index.html's :root; keep them in sync when the palette changes. */
 
 :root{
   --paper:#f7f3ea;
@@ -16,27 +18,36 @@
   --accent-ink:#24564e;
   --accent-wash:rgba(47,109,99,.08);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:var(--paper);color:var(--body);
+
+/* ---------- standalone essay page ground ---------- */
+body.essay-body{
+  box-sizing:border-box;margin:0;padding:0;
+  background:#2b2822;color:var(--body);
   font-family:'Archivo',system-ui,sans-serif;line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
-a{color:inherit;text-decoration:none}
-::selection{background:var(--accent);color:#fff}
+body.essay-body *{box-sizing:border-box;margin:0;padding:0}
+body.essay-body a{color:inherit;text-decoration:none}
+body.essay-body ::selection{background:var(--accent);color:#fff}
 
-/* ---------- chrome ---------- */
-.site-head{max-width:740px;margin:0 auto;padding:26px 24px 0;display:flex;justify-content:space-between;align-items:baseline}
-.site-head .mark{font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;letter-spacing:-.01em;color:var(--ink);text-transform:uppercase}
-.site-head .mark .k{color:var(--accent)}
-.site-head .back{font-size:13.5px;font-weight:500;color:var(--dim);transition:color .2s}
-.site-head .back:hover{color:var(--accent)}
-.site-foot{max-width:740px;margin:0 auto;padding:30px 24px 44px;border-top:1px solid var(--line-soft);
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--faint)}
-.site-foot .accent{color:var(--accent)}
+/* ---------- overlay scrim (homepage) ---------- */
+.modal{position:fixed;inset:0;z-index:60;display:none;overflow-y:auto;background:rgba(38,35,30,.6);backdrop-filter:blur(6px)}
+.modal.open{display:block}
+body.locked{overflow:hidden}
 
-/* ---------- article ---------- */
-.reader{max-width:740px;margin:0 auto;padding:44px 24px 40px}
+/* ---------- fixed chrome: progress, brand, close ---------- */
+.m-prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:64}
+.m-brand{position:fixed;top:20px;left:20px;z-index:65;font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;letter-spacing:-.01em;color:#f3efe7;text-transform:uppercase;text-decoration:none}
+.m-brand span{color:#7fc2b5}
+.m-close{position:fixed;top:16px;right:16px;z-index:65;font-size:14px;font-weight:600;font-family:'Archivo',sans-serif;
+  color:var(--ink);border:1px solid var(--line);background:rgba(255,255,255,.95);border-radius:99px;padding:11px 20px;min-height:44px;cursor:pointer;transition:.25s;text-decoration:none;display:inline-flex;align-items:center}
+.m-close:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ---------- the reader card ---------- */
+.reader-card{max-width:740px;margin:60px auto 96px;padding:58px 60px 60px;position:relative;
+  background:var(--paper);color:var(--ink);border-radius:18px;border-top:3px solid var(--accent);
+  box-shadow:0 30px 80px rgba(20,18,15,.4)}
+@media(max-width:640px){.reader-card{margin:0;padding:74px 22px 60px;min-height:100vh;border-radius:0}}
 .r-meta{display:flex;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:var(--faint);margin-bottom:24px;text-transform:uppercase}
 .r-meta .acc{color:var(--accent);font-weight:500}
 .r-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4.5vw,2.6rem);letter-spacing:-.015em;line-height:1.12;margin-bottom:8px;color:var(--ink)}
@@ -83,7 +94,7 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- next / prev ---------- */
 .r-next{margin-top:40px;padding-top:26px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.r-next .nxt{font-size:14px;font-weight:600;color:var(--dim);
+.r-next .nxt{font-size:14px;font-weight:600;color:var(--dim);font-family:'Archivo',sans-serif;
   border:1px solid var(--line);border-radius:99px;padding:12px 22px;min-height:48px;display:inline-flex;align-items:center;transition:.25s}
 .r-next .nxt:hover{color:var(--accent);border-color:var(--accent)}
 .r-next .nolink{font-family:'Newsreader',serif;font-style:italic;font-size:1rem;color:var(--dim)}

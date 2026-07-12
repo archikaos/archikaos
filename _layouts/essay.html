@@ -16,14 +16,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/assets/essay.css' | relative_url }}">
 </head>
-<body>
+<body class="essay-body">
 
-<header class="site-head">
-  <a class="mark" href="{{ '/' | relative_url }}">ARCHI<span class="k">KAOS</span></a>
-  <a class="back" href="{{ '/#writing' | relative_url }}">All essays</a>
-</header>
+<div class="m-prog" id="prog"></div>
+<a class="m-brand" href="{{ '/' | relative_url }}">ARCHI<span>KAOS</span></a>
+<a class="m-close" href="{{ '/#writing' | relative_url }}">Close ✕</a>
 
-<main class="reader">
+<main class="reader-card">
   <div class="r-meta"><span class="acc">{{ page.num }}</span><span>{{ page.date | date: "%b %-d, %Y" }}</span><span>{{ page.read }} read</span><span>{{ page.series }}</span></div>
   <h1 class="r-title">{{ page.sent }}</h1>
   <div class="r-part">{{ page.part }}</div>
@@ -40,10 +39,16 @@
   <div class="r-spec">Reader spec: positive polarity · serif at 19px · ~62ch measure · 1.7 leading</div>
 </main>
 
-<footer class="site-foot">
-  <span>ARCHIKAOS © {{ 'now' | date: "%Y" }} Jordan Billingsley</span>
-  <span><span class="accent">·</span> sharing thoughts, no ads, connect for more</span>
-</footer>
+<script>
+(function(){
+  var prog=document.getElementById('prog');
+  function up(){
+    var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+    prog.style.width=(max>0?(d.scrollTop||document.body.scrollTop)/max*100:0)+'%';
+  }
+  addEventListener('scroll',up,{passive:true});up();
+})();
+</script>
 
 </body>
 </html>
