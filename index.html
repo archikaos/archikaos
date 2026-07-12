@@ -591,10 +591,12 @@
      reader card over the homepage, updating the URL. Direct visits and crawlers
      get the standalone page at /essays/<slug>/. -->
 <div class="modal" id="reader" role="dialog" aria-modal="true" aria-label="Essay reader">
-  <div class="m-prog" id="oprog"></div>
-  <button class="m-close" id="oclose">Close ✕</button>
   <div id="minner"></div>
 </div>
+<!-- fixed chrome lives OUTSIDE the modal: backdrop-filter on .modal would otherwise
+     capture position:fixed descendants and let them scroll away with the content -->
+<div class="m-prog ovl" id="oprog"></div>
+<button class="m-close ovl" id="oclose">Close ✕</button>
 
 <script>
 /* ================= CONFIG: everything you need to wire lives here ================= */
@@ -665,7 +667,7 @@ addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>30));
     else if(u.origin===location.origin&&(u.pathname==='/'||u.hash)){e.preventDefault();close()}
   });
   closeBtn.addEventListener('click',()=>close());
-  modal.addEventListener('click',e=>{if(e.target===modal)close()});
+  modal.addEventListener('click',e=>{if(e.target===modal||e.target===inner)close()});
   addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))close()});
   addEventListener('popstate',e=>{
     if(e.state&&e.state.essay)open(e.state.essay,false);

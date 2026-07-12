@@ -34,6 +34,10 @@ body.essay-body ::selection{background:var(--accent);color:#fff}
 .modal{position:fixed;inset:0;z-index:60;display:none;overflow-y:auto;background:rgba(38,35,30,.6);backdrop-filter:blur(6px)}
 .modal.open{display:block}
 body.locked{overflow:hidden}
+/* the overlay's fixed chrome (siblings of .modal, shown only while it is open) */
+.m-prog.ovl,.m-close.ovl{display:none}
+body.locked .m-prog.ovl{display:block}
+body.locked .m-close.ovl{display:inline-flex}
 
 /* ---------- fixed chrome: progress, brand, close ---------- */
 .m-prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:64}
