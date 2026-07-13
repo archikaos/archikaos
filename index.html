@@ -4,14 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARCHIKAOS | Jordan Billingsley | One Less Mess</title>
-<meta name="description" content="One less mess. Calm writing on design technology, AI, and the practice of architecture, by Jordan Billingsley. Send me your mess; every one gets a reply.">
+<meta name="description" content="One less mess. Calm writing on design technology, AI, and the practice of architecture, by Jordan Billingsley. Calm responses to chaos, promised.">
 <meta property="og:title" content="ARCHIKAOS | Jordan Billingsley">
-<meta property="og:description" content="One less mess. Calm writing on design technology, AI, and architecture practice. Sharing thoughts, no ads, connect for more.">
+<meta property="og:description" content="One less mess. Calm responses to chaos. Sharing thoughts, no ads, connect for more.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/essay.css">
+<link rel="stylesheet" href="assets/essay.css">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="alternate" type="application/atom+xml" title="ARCHIKAOS essays" href="/feed.xml">
 <style>
   :root{
@@ -78,6 +80,13 @@
   .kline{position:absolute;left:2%;right:3%;bottom:.03em;height:.04em;background:var(--accent);border-radius:3px;
     transform:scaleX(0);transform-origin:left center;transition:transform 1s cubic-bezier(.22,.8,.3,1);pointer-events:none}
   .k.calm .kline{transform:scaleX(1)}
+  /* the goat: Jordan's mark (assets/goat.png as a CSS mask, so it takes any palette color).
+     appears standing on the fallen K once the avalanche settles; any engagement sends it off */
+  .goat-icon{display:inline-block;background:currentColor;
+    -webkit-mask:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA/CAYAAABQHc7KAAAFEUlEQVR42t3baYxdYxgH8F/HtLS22moptVTQqhqMNXYqsS+JRIggDUFIrAk+8BEfCL6IJfYi9tDgA9pKldZeWqWltTXTVmta1al2pteH80wc173n3rm3Y+65/+TNXc55T87zvM/77C/VYxsM0mTYpMr7zsUpmB6/d8JROB5t6MYyTYqzMROn4hjci9n4Fo/iAuzcrMSfiQ58glfwJwp4FuP6IEG5xPn4LQjuic8CHsSwZiZ8ECZieYroXiY8iq00OSais4j4Qii6G7FZMxN/GX4vQXzvWI83Mb4Zxf5yrMkgPj0W4KJm8QsG41qsrpL43rEGt8b8XKO9gthnjXW4Lu+e4PbxfQX2qWH+weEnLMq7JEyoUQoKeAvD80h0S+r7mDqec1K4yrlmwKF1KtLz0ZpX8d8BX9SxBQoRM+ySN8J7V2x8DQqwGDviCvwYinV4mNZvIprsCEY1JAMmYOhGeN4dJf7rwdf4CDMwN5i0MszogHuAO+DliPX7Gz1YEmM+vouIc2WMVeFglTK3g0NnrcbPWBrxSd0MaMNkjBzgxfgrJGJdGWXdO9YFozrwGT7HwmBqV2Sm/ujLFmjBkAbYjpvGqAbbYU8cmZKs34OJnfgUz2NaGYn6l2j9ga2xVzCiJ5gyKGfmfFjkKkbgQEke8yD8ip8qPWBoWIITcQkWF5m4zhC9Qg7HYlxV5PNkoi32UTrquz2UViGnoxMXVsuAc0KZ9E6eLkmDP5NjBhTC/I7KcoV7MTaljDaEMunA1EZ0ZPqAMTijGpd4Voprc1Lu7e5FWyOP47VKErAf9k/9fjyUiPDeJuVcCsZXMrUnY20QOS/sbRojI/GRVwlYEea+rATMDmVBUgNYXnR9WTU2tYGxBQ7IYsBS3I+PJaWwYnSHXpDjBHB7NU7Rvhl1v0uKSmV5G1NDEsqWx7tTZbFy8cO52DynUrBrRKAz1VjdXY/TGyB6rCduaA9l/1UtDFgnSYW351gXDMMJWN1Sw+RufC//2Aw3tNQ4uUtzYKuWOpIXzYD3W2q0peNySvBKPIwp8fvD1hq9qbE5JL4bt+ChCItfxJZqLKjenUMH6Lmi3OeYyIDVHFvPyxHxn4R3a2O30C3JAfFzJE2d/YKTJLn5el/yHTwhye9v2IjEz6ikr+ptdFyIV6NaM1KSXq/FsryEa/BUKiSfJWnMHFXDe67CI7j6/2zc2CUixUmRQe7LSj5ZptdoKB6oQZpOG8gu1lbsjevxS5Uv/QG2LfO8o8N+V/OcaZIMdsPgUHxZxYv/ktGhclgkaio9YwmOqKdDpD/wMa6MhGqlELs7w/GqpnT/mKQEr1Ebr1fITleXa8A+K5iTtfpfYHS9PUL9iZck5ww2lLk+V/kq7vAKCm29pIP9+0ZmQAH34f0y15dkzK2UeZoRbq5GZoDwFe6JFesL9sq4tjYka1UeGADvhclT4kBWOfwQ4l1qi7yL1/MWlt5UQom9kHEOYQj2wMX+W5ucXWeD54DgkBKELAjnKQt7S7o9ipn3Rj0dbi0DwID5+Krovz0kWdosHO6fxm6pDPXbjdBu11fcWWIlJ2fkGrcIX6H4DNNdA7SIdeOM1BG8dBvLIcqfY+oquv/pdIkrb2gr4xneVuLeY0uU5KdgN/LdqLC8BAOmp8LiwTivBPGLMiSlNS+HOSdI+hOLGdAViZFLwzQWi/1ySWG2FEaHR3hcHhhwcw0l9r8k5xZLYYSkn6Ggjwc3/gbtupVJL+2T0AAAAABJRU5ErkJggg==) no-repeat center/contain;mask:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA/CAYAAABQHc7KAAAFEUlEQVR42t3baYxdYxgH8F/HtLS22moptVTQqhqMNXYqsS+JRIggDUFIrAk+8BEfCL6IJfYi9tDgA9pKldZeWqWltTXTVmta1al2pteH80wc173n3rm3Y+65/+TNXc55T87zvM/77C/VYxsM0mTYpMr7zsUpmB6/d8JROB5t6MYyTYqzMROn4hjci9n4Fo/iAuzcrMSfiQ58glfwJwp4FuP6IEG5xPn4LQjuic8CHsSwZiZ8ECZieYroXiY8iq00OSais4j4Qii6G7FZMxN/GX4vQXzvWI83Mb4Zxf5yrMkgPj0W4KJm8QsG41qsrpL43rEGt8b8XKO9gthnjXW4Lu+e4PbxfQX2qWH+weEnLMq7JEyoUQoKeAvD80h0S+r7mDqec1K4yrlmwKF1KtLz0ZpX8d8BX9SxBQoRM+ySN8J7V2x8DQqwGDviCvwYinV4mNZvIprsCEY1JAMmYOhGeN4dJf7rwdf4CDMwN5i0MszogHuAO+DliPX7Gz1YEmM+vouIc2WMVeFglTK3g0NnrcbPWBrxSd0MaMNkjBzgxfgrJGJdGWXdO9YFozrwGT7HwmBqV2Sm/ujLFmjBkAbYjpvGqAbbYU8cmZKs34OJnfgUz2NaGYn6l2j9ga2xVzCiJ5gyKGfmfFjkKkbgQEke8yD8ip8qPWBoWIITcQkWF5m4zhC9Qg7HYlxV5PNkoi32UTrquz2UViGnoxMXVsuAc0KZ9E6eLkmDP5NjBhTC/I7KcoV7MTaljDaEMunA1EZ0ZPqAMTijGpd4Voprc1Lu7e5FWyOP47VKErAf9k/9fjyUiPDeJuVcCsZXMrUnY20QOS/sbRojI/GRVwlYEea+rATMDmVBUgNYXnR9WTU2tYGxBQ7IYsBS3I+PJaWwYnSHXpDjBHB7NU7Rvhl1v0uKSmV5G1NDEsqWx7tTZbFy8cO52DynUrBrRKAz1VjdXY/TGyB6rCduaA9l/1UtDFgnSYW351gXDMMJWN1Sw+RufC//2Aw3tNQ4uUtzYKuWOpIXzYD3W2q0peNySvBKPIwp8fvD1hq9qbE5JL4bt+ChCItfxJZqLKjenUMH6Lmi3OeYyIDVHFvPyxHxn4R3a2O30C3JAfFzJE2d/YKTJLn5el/yHTwhye9v2IjEz6ikr+ptdFyIV6NaM1KSXq/FsryEa/BUKiSfJWnMHFXDe67CI7j6/2zc2CUixUmRQe7LSj5ZptdoKB6oQZpOG8gu1lbsjevxS5Uv/QG2LfO8o8N+V/OcaZIMdsPgUHxZxYv/ktGhclgkaio9YwmOqKdDpD/wMa6MhGqlELs7w/GqpnT/mKQEr1Ebr1fITleXa8A+K5iTtfpfYHS9PUL9iZck5ww2lLk+V/kq7vAKCm29pIP9+0ZmQAH34f0y15dkzK2UeZoRbq5GZoDwFe6JFesL9sq4tjYka1UeGADvhclT4kBWOfwQ4l1qi7yL1/MWlt5UQom9kHEOYQj2wMX+W5ucXWeD54DgkBKELAjnKQt7S7o9ipn3Rj0dbi0DwID5+Krovz0kWdosHO6fxm6pDPXbjdBu11fcWWIlJ2fkGrcIX6H4DNNdA7SIdeOM1BG8dBvLIcqfY+oquv/pdIkrb2gr4xneVuLeY0uU5KdgN/LdqLC8BAOmp8LiwTivBPGLMiSlNS+HOSdI+hOLGdAViZFLwzQWi/1ySWG2FEaHR3hcHhhwcw0l9r8k5xZLYYSkn6Ggjwc3/gbtupVJL+2T0AAAAABJRU5ErkJggg==) no-repeat center/contain}
+  .goatk{position:absolute;left:-6.0%;top:-15.5%;width:.26em;height:.26em;color:var(--ink);opacity:0;pointer-events:none;
+    transform:scaleX(-1);transition:opacity 2.2s ease .8s}
+  .goatk.show{opacity:1}
   .whisper{margin-top:10px;min-height:1.5em;font-family:'Newsreader',serif;font-style:italic;font-size:1.05rem;color:var(--dim);
     opacity:0;transition:opacity 1.4s ease}
   .whisper.show{opacity:1}
@@ -120,6 +129,15 @@
   .get-x{position:absolute;top:14px;right:14px;font-size:13px;font-weight:600;font-family:'Archivo',sans-serif;
     color:var(--dim);border:1px solid var(--line);background:transparent;border-radius:99px;padding:8px 14px;min-height:38px;cursor:pointer;transition:.25s}
   .get-x:hover{color:var(--accent);border-color:var(--accent)}
+  .get-note{display:none;font-family:'Newsreader',serif;font-style:italic;font-size:1.05rem;color:var(--dim);margin:-6px 0 16px}
+  .get-card.drafting .get-note{display:block}
+  .kofi-btn{display:inline-flex;align-items:center;gap:9px;margin-top:14px;background:var(--accent);color:#fff !important;
+    font-weight:600;font-size:14px;border-radius:99px;padding:11px 20px;min-height:44px;transition:background .25s}
+  .kofi-btn:hover{background:var(--accent-ink)}
+  .kofi-btn .kofi-cup{height:22px;width:auto}
+  /* subtle in-prose link to a not-yet-published essay; becomes a real essay link at publish */
+  .exe-link{color:var(--accent);border-bottom:1px dotted rgba(47,109,99,.55);cursor:pointer;transition:border-color .2s,color .2s}
+  .exe-link:hover{color:var(--accent-ink);border-bottom-style:solid}
 
   /* ---------- sections ---------- */
   section{padding:56px 0;border-top:1px solid var(--line-soft)}
@@ -135,6 +153,16 @@
   .sec-intro{color:var(--dim);font-size:1.02rem;line-height:1.65;max-width:60ch;margin:-26px 0 18px}
   @media(max-width:600px){.sec-intro{margin-top:-18px}}
   .sub-below{display:block;margin:0 0 14px}
+  /* planned standalones: cards in the series-card family; clicking opens the Get Essays window */
+  .plan-label{margin:38px 0 14px}
+  .plan-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:820px){.plan-cards{grid-template-columns:1fr}}
+  .plan-card{border:1px solid var(--line-soft);background:var(--paper-lift);border-radius:14px;padding:20px 22px;
+    display:flex;flex-direction:column;gap:7px;cursor:pointer;transition:background .25s,border-color .25s}
+  .plan-card:hover{background:var(--card);border-color:var(--line)}
+  .plan-card h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.12rem;line-height:1.25;color:var(--ink)}
+  .plan-card p{color:var(--dim);font-size:.92rem;line-height:1.55}
+  .plan-card .plan-date{margin-top:auto;padding-top:8px;font-size:12px;color:var(--faint)}
 
   /* ---------- writing ---------- */
   .series-card{border:1px solid var(--line-soft);background:var(--paper-lift);border-radius:14px;padding:20px 24px;margin-bottom:20px;
@@ -171,7 +199,7 @@
   .toc.live:hover .t-act{color:var(--accent)}
   .toc.tk .t-act{font-weight:400;font-style:italic;color:var(--faint)}
 
-  /* ---------- the mess ---------- */
+  /* ---------- the chaos ---------- */
   .mess-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
   @media(max-width:860px){.mess-grid{grid-template-columns:1fr;gap:40px}}
   .mantra{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(1.5rem,3.4vw,2.15rem);line-height:1.28;margin-bottom:24px}
@@ -210,28 +238,6 @@
   .mess-note.ok{color:var(--accent);font-weight:500}
 
 
-  /* ---------- books ---------- */
-  .shelf{display:grid;grid-template-columns:1fr 1fr;gap:44px}
-  @media(max-width:820px){.shelf{grid-template-columns:1fr}}
-  .bk{display:grid;grid-template-columns:190px 1fr;gap:26px;align-items:start}
-  @media(max-width:520px){.bk{grid-template-columns:1fr;gap:18px}.bk .cover{max-width:150px}}
-  /* TODO: swap .cover blocks for real cover <img> when you have the art */
-  .cover{aspect-ratio:2/3;border-radius:8px;background:#23262b;color:#f3efe7;position:relative;padding:18px;
-    display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;box-shadow:0 10px 26px rgba(35,38,43,.18)}
-  a:hover .cover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(35,38,43,.26)}
-  .cover .cpub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;color:rgba(243,239,231,.45);text-transform:uppercase}
-  .cover .ctitle{font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;line-height:1.1;letter-spacing:-.01em;margin-top:auto}
-  .cover .ctitle .acc{color:#7fc2b5;font-style:italic}
-  .cover .csub{font-size:.7rem;color:rgba(243,239,231,.6);margin-top:8px;line-height:1.45}
-  .cover .cauthor{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:rgba(243,239,231,.6);margin-top:14px;text-transform:uppercase}
-  .bk-info .badge{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-    color:var(--accent);background:var(--accent-wash);border-radius:99px;padding:5px 12px;margin-bottom:14px}
-  .bk-info h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.35rem;letter-spacing:-.01em;line-height:1.2;margin-bottom:6px;color:var(--ink)}
-  .bk-info .byline{font-size:12.5px;color:var(--faint);letter-spacing:.04em;margin-bottom:12px;text-transform:uppercase}
-  .bk-info p{color:var(--dim);font-size:.98rem;line-height:1.65;max-width:44ch}
-  .bk-info .blink{display:inline-block;margin-top:14px;font-size:14px;font-weight:600;color:var(--accent)}
-  .bk-info .blink:hover{color:var(--accent-ink)}
-
   /* ---------- speaking ---------- */
   .keynote{background:var(--card);border:1px solid var(--line-soft);border-left:4px solid var(--accent);border-radius:16px;
     padding:34px 36px;margin-bottom:40px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;box-shadow:0 10px 30px rgba(35,38,43,.06)}
@@ -241,13 +247,12 @@
   .keynote p{color:var(--dim);font-size:.98rem;line-height:1.65;max-width:56ch}
   .keynote .kcta{font-size:14px;font-weight:600;background:var(--accent);color:#fff;border-radius:99px;padding:13px 24px;min-height:48px;display:inline-flex;align-items:center;transition:background .25s;white-space:nowrap;justify-self:start}
   .keynote .kcta:hover{background:var(--accent-ink)}
-  .talks{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  @media(max-width:680px){.talks{grid-template-columns:1fr}}
-  .talk{background:var(--paper-lift);border:1px solid var(--line-soft);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:7px;transition:background .25s}
-  .talk:hover{background:var(--card)}
-  .talk .kind{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-  .talk h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;line-height:1.3;color:var(--ink)}
-  .talk .tn{color:var(--dim);font-size:.92rem;line-height:1.55}
+  /* other rooms: a compact list so the section stays short and Share Your Chaos stays visible */
+  .talks-min{display:grid;grid-template-columns:1fr 1fr;gap:8px 32px}
+  @media(max-width:680px){.talks-min{grid-template-columns:1fr}}
+  .tm{display:flex;align-items:baseline;gap:12px;padding:4px 0}
+  .tm-kind{flex:0 0 74px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .tm-title{font-family:'Fraunces',serif;font-weight:500;font-size:1.02rem;line-height:1.35;color:var(--ink)}
 
   /* ---------- method ---------- */
   .method-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
@@ -273,17 +278,30 @@
   .about-copy p{color:var(--dim);font-size:1.05rem;line-height:1.7}
   .about-copy p b{color:var(--ink);font-weight:600}
   .about-copy p+p{margin-top:14px}
-  .facts{display:flex;gap:12px 24px;flex-wrap:wrap;margin-top:24px;font-size:12px;letter-spacing:.06em;color:var(--faint);text-transform:uppercase;font-weight:500}
-  .facts span::before{content:"· ";color:var(--accent)}
-  .cv-link{display:inline-block;margin-top:20px;font-size:14px;font-weight:600;color:var(--accent)}
-  .cv-link:hover{color:var(--accent-ink)}
+  .about-copy .in-link{color:var(--accent);font-weight:600}
+  .about-copy .in-link:hover{color:var(--accent-ink)}
+  /* the crossed-out cliché: the joke as a graphic. knobs: strike angle, thickness, vertical position */
+  .strike-wrap{margin-bottom:36px}
+  .strike-line{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:clamp(1.5rem,3.6vw,2.4rem);
+    color:var(--ink);position:relative;display:inline-block;line-height:1.2}
+  .strike-line::after{content:"";position:absolute;left:-1%;right:-1%;top:54%;height:.07em;background:var(--accent);
+    border-radius:3px;transform:rotate(-1.5deg)}
+  .strike-cap{margin-top:12px;color:var(--dim);font-size:.98rem;line-height:1.65;max-width:60ch}
+  .strike-close{margin:40px 0 0}
+  .strike-close .strike-line::after{transform:rotate(1.5deg)}
+  /* about grid + fun goat facts card. knobs: FACTS array in the script, card min-height via .gf-fact */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:36px}}
+  .goat-card{background:var(--card);border:1px solid var(--line-soft);border-radius:16px;padding:26px 26px 24px;box-shadow:0 10px 30px rgba(35,38,43,.06)}
+  .gf-head{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:14px}
+  .gf-fact{font-family:'Newsreader',serif;font-size:1.12rem;line-height:1.6;color:var(--ink);min-height:5.2em}
+  .gf-btn{margin-top:14px;font-family:'Archivo',sans-serif;font-size:13.5px;font-weight:600;color:var(--dim);background:transparent;
+    border:1px solid var(--line);border-radius:99px;padding:10px 18px;min-height:44px;cursor:pointer;transition:.25s}
+  .gf-btn:hover{color:var(--accent);border-color:var(--accent)}
 
-  /* ---------- subscribe ---------- */
+  /* ---------- connect ---------- */
   .subfinal{padding-bottom:96px}
-  .subfinal .big{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2rem,5.5vw,3.6rem);letter-spacing:-.015em;line-height:1.08;margin-bottom:16px;color:var(--ink)}
-  .subfinal .big em{font-style:italic;color:var(--accent)}
-  .subfinal .sp{color:var(--dim);font-size:1.05rem;line-height:1.65;max-width:54ch;margin-bottom:28px}
-  .alt-chan{display:flex;gap:12px 28px;flex-wrap:wrap;margin-top:32px;font-size:13.5px}
+  .alt-chan{display:flex;gap:12px 28px;flex-wrap:wrap;font-size:13.5px}
   .alt-chan a{color:var(--dim);font-weight:500;transition:color .2s}
   .alt-chan a:hover{color:var(--accent)}
   .alt-chan .lbl{color:var(--faint)}
@@ -291,6 +309,8 @@
   footer{border-top:1px solid var(--line-soft);padding:34px 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     font-size:12.5px;color:var(--faint)}
   footer .accent{color:var(--accent)}
+  footer .goat-ft{width:13px;height:13px;vertical-align:-2px;color:var(--faint);opacity:.55;cursor:default;transition:opacity .3s,color .3s}
+  footer .goat-ft:hover{opacity:1;color:var(--accent)}
   @media(max-width:600px){footer{padding:28px 20px;flex-direction:column;gap:8px}}
 </style>
 </head>
@@ -299,8 +319,8 @@
 <header id="hdr">
   <nav class="hnav">
     <a href="#writing">Start Reading</a>
-    <a href="#mess">Tell Me About Your Mess</a>
-    <a href="#subscribe" class="hsub" id="getbtn">Get Essays</a>
+    <a href="#chaos">Share Your Chaos</a>
+    <a href="#connect" class="hsub" id="getbtn">Get Essays</a>
   </nav>
 </header>
 
@@ -309,9 +329,9 @@
   <canvas id="gridfield" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="eyebrow reveal in">JORDAN BILLINGSLEY <b>·</b> DESIGN TECHNOLOGY</div>
-    <h1 class="wordmark reveal in" id="mark" aria-label="ARCHIKAOS">ARCHI<span class="k" id="kaos"><span class="kl">K</span><span class="kl">A</span><span class="kl">O</span><span class="kl">S</span><span class="kline" aria-hidden="true"></span></span></h1>
+    <h1 class="wordmark reveal in" id="mark" aria-label="ARCHIKAOS">ARCHI<span class="k" id="kaos"><span class="kl">K</span><span class="kl">A</span><span class="kl">O</span><span class="kl">S</span><span class="kline" aria-hidden="true"></span><span class="goat-icon goatk" id="goatk" aria-hidden="true" title="You found one. Tell me."></span></span></h1>
     <p class="whisper" id="whisper" aria-hidden="true">Chaos is the medium. Calm is the method.</p>
-    <p class="hero-sub reveal in">Architecture is being disrupted, and some days it feels like everything is coming apart. Even disruptors can't control the shape of disruption. But we do choose our response. I'm sharing more of my writing and speaking on AI, computation, and the tools remaking practice, in hopes of influencing your response.<br><b>Remain calm (not still).</b></p>
+    <p class="hero-sub reveal in">Architecture is being disrupted, and some days it feels like everything is coming apart. Even disruptors can't control the shape of disruption. But we do choose our response. I'm sharing more of my writing and speaking on AI, computation, and the tools remaking practice, in hopes of influencing your response to <b>be calm</b>.</p>
   </div>
 </div>
 
@@ -323,12 +343,12 @@
     </div>
 
     <p class="sec-intro reveal">Not everything here will arrive as a series, but I'm starting with a breakdown of <em>You Are, Therefore I Am.</em> Most of what follows will stand alone, published when it's ready. All of this is thinking in public, which means every position is a working position. Thanks for being part of the process.</p>
-    <div class="sec-sub sub-below reveal">essays, in order</div>
+    <div class="sec-sub sub-below reveal">my thinking, in public</div>
 
     <div class="series-card reveal">
       <div>
         <h3>“You Are, Therefore I Am”</h3>
-        <p>I inverted Descartes for the age of the prompt, then read the result the way scholars read scripture. One word at a time. There's a word for that too: exegesis. (A thought tool that has earned its own essay, coming after the series.) On the surface, it's about what we do to AI. Underneath, it's about what using AI does to us.</p>
+        <p>I inverted Descartes' <em>I think, therefore I am</em> for the age of the prompt, then read the result the way scholars read scripture. One word at a time (exegesis). On the surface, it's about what we do to AI. Underneath, it's about what using AI does to us.</p>
         <p class="epi">“The machine speaks with the voice of <b>everyone</b>. Our work is answering as <b>someone</b>.”</p>
       </div>
       <div class="series-sched">
@@ -382,101 +402,23 @@
         <span class="t-act">forthcoming, Aug 3</span>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============ THE MESS ============ -->
-<section id="mess">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">Tell me about your mess</h2>
-      <span class="sec-sub">every one gets a reply</span>
-    </div>
-    <div class="mess-grid">
-      <div class="mess-copy reveal">
-        <p class="mantra">
-          <span class="m1">Chaos is the medium.</span>
-          <span class="m2">Calm is the method.</span>
-          <span class="m3">I'm curious about <em>the mess</em>.</span>
-        </p>
-        <p>Every practice has one. The workflow nobody will touch. The model that fights back. The template three people understand and one person trusts. The tool the firm bought two years ago and never opened.</p>
-        <p>That's the mess, and I collect them. <b>Write to me about yours. I read every one, and I reply to every one.</b> The best tangles become future essays, anonymized unless you'd like the credit. That's the deal behind the name: you send me a mess, and everyone gets one less.</p>
-        <div class="mess-pledge">
-          <b>·</b> every mess gets a reply<br>
-          <b>·</b> the best tangles become essays<br>
-          <b>·</b> no mess is too small: tedium is the enemy, not you
-        </div>
-      </div>
-      <div class="reveal">
-        <form class="margin-card" data-ask>
-          <div class="ah"><span>The margin</span><span>yours to write in</span></div>
-          <label for="at">What kind of mess</label>
-          <input id="at" name="topic" type="text" list="mess-types" placeholder="BIM · computation · AI · adoption · a career knot…">
-          <datalist id="mess-types">
-            <option value="BIM standards & workflows"></option>
-            <option value="Computational / parametric design"></option>
-            <option value="AI in practice"></option>
-            <option value="Technology adoption & culture"></option>
-            <option value="Automation & scripting"></option>
-            <option value="A design technology career"></option>
-          </datalist>
-          <label for="aq">The mess</label>
-          <textarea id="aq" name="question" placeholder="What's tangled? Start anywhere." required></textarea>
-          <div class="mess-row">
-            <div>
-              <label for="an">Name <span>(optional)</span></label>
-              <input id="an" name="name" type="text" placeholder="Ada">
-            </div>
-            <div>
-              <label for="ae">Email <span>(for the reply)</span></label>
-              <input id="ae" name="email" type="email" placeholder="you@firm.com" required>
-            </div>
-          </div>
-          <button type="submit">Send the mess</button>
-          <div class="mess-note" data-asknote>Goes straight to Jordan. Never shared, never spammed.</div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BOOKS ============ -->
-<section id="books">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">On the shelf</h2>
-      <span class="sec-sub">books I'm featured in</span>
-    </div>
-    <div class="shelf">
-      <a class="bk reveal" data-link="agentic" target="_blank" rel="noopener">
-        <div class="cover">
-          <span class="cpub">ROUTLEDGE · 2026</span>
-          <span class="ctitle">The <span class="acc">Agentic</span> Architect</span>
-          <span class="csub">AI and the Resurgence of Practice</span>
-          <span class="cauthor">Randy Deutsch</span>
-        </div>
-        <div class="bk-info">
-          <span class="badge">2026</span>
-          <h3>The Agentic Architect</h3>
-          <div class="byline">Randy Deutsch · Routledge</div>
-          <p>How architects reclaim agency in the age of AI. Agentic AI completes tasks; an agentic architect acts with purpose. Featuring a contribution from Jordan.</p>
-          <span class="blink">Find the book ↗</span>
-        </div>
+    <div class="sec-sub sub-below plan-label reveal">what I'm writing next</div>
+    <div class="plan-cards reveal">
+      <a class="plan-card" data-get href="#connect">
+        <h3>Exegesis &amp; Eisegesis</h3>
+        <p>What we draw out of a text, and what we read into it.</p>
+        <span class="plan-date">forthcoming · Aug 10, 2026</span>
       </a>
-      <a class="bk reveal" data-link="superusers" target="_blank" rel="noopener">
-        <div class="cover">
-          <span class="cpub">ROUTLEDGE · 2019</span>
-          <span class="ctitle">Super<span class="acc">users</span></span>
-          <span class="csub">Design Technology Specialists and the Future of Practice</span>
-          <span class="cauthor">Randy Deutsch</span>
-        </div>
-        <div class="bk-info">
-          <span class="badge">2019</span>
-          <h3>Superusers</h3>
-          <div class="byline">Randy Deutsch · Routledge</div>
-          <p>The book that named the role: design technology specialists and the future of practice. Jordan is a contributor.</p>
-          <span class="blink">Find the book ↗</span>
-        </div>
+      <a class="plan-card" data-get href="#connect">
+        <h3>Zen and the Art of Garden Tractor Maintenance</h3>
+        <p>Care, attention, and the machines we keep running.</p>
+        <span class="plan-date">forthcoming · Aug 17, 2026</span>
+      </a>
+      <a class="plan-card" data-get href="#connect">
+        <h3>Someone Used to Know</h3>
+        <p>On knowledge that used to live in a someone.</p>
+        <span class="plan-date">forthcoming · Aug 24, 2026</span>
       </a>
     </div>
   </div>
@@ -487,7 +429,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">Speaking</h2>
-      <span class="sec-sub">sharing the work in person</span>
+      <span class="sec-sub">me, saying it in rooms</span>
     </div>
 
     <div class="keynote reveal">
@@ -499,11 +441,67 @@
       <a class="kcta" data-mail="speaking">Invite me to speak</a>
     </div>
 
-    <div class="talks reveal">
-      <div class="talk"><span class="kind">Session</span><h4>Advancing Computational Building Design</h4><span class="tn">Parametric and generative methods, from strategy to production.</span></div>
-      <div class="talk"><span class="kind">Session</span><h4>Creating a Technology-Receptive Culture</h4><span class="tn">Adoption is a people problem before it's a software problem.</span></div>
-      <div class="talk"><span class="kind">Workshop</span><h4>BIM Manager Boot Camp</h4><span class="tn">Co-instructor. The discipline behind the deliverables.</span></div>
-      <div class="talk"><span class="kind">Article</span><h4>How to Measure Software Investment</h4><span class="tn">Making the technology budget legible to leadership.</span></div>
+    <div class="sec-sub sub-below plan-label reveal">other rooms</div>
+    <div class="talks-min reveal">
+      <div class="tm"><span class="tm-kind">session</span><span class="tm-title">Advancing Computational Building Design</span></div>
+      <div class="tm"><span class="tm-kind">session</span><span class="tm-title">Creating a Technology-Receptive Culture</span></div>
+      <div class="tm"><span class="tm-kind">workshop</span><span class="tm-title">BIM Manager Boot Camp</span></div>
+      <div class="tm"><span class="tm-kind">article</span><span class="tm-title">How to Measure Software Investment</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE CHAOS ============ -->
+<section id="chaos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">Share your chaos</h2>
+      <span class="sec-sub">now, tell me yours</span>
+    </div>
+    <div class="mess-grid">
+      <div class="mess-copy reveal">
+        <p class="mantra">
+          <span class="m1">Chaos is the medium.</span>
+          <span class="m2">Calm is the method.</span>
+          <span class="m3">I'm curious about <em>yours</em>.</span>
+        </p>
+        <p>Every practice has its own. The workflow nobody will touch. The model that fights back. The template three people understand and one person trusts. The tool the firm bought two years ago and never opened.</p>
+        <p>That's the chaos, and I collect it. <b>Write to me about yours. I promise I will reply.</b></p>
+        <div class="mess-pledge">
+          <b>architecture</b> \ ˈär-kə-ˌtek-chər \ (noun): the art and practice of designing and building; the carefully designed structure of something.<br>
+          <b>chaos</b> \ ˈkā-ˌäs \ (noun): complete disorder and confusion; in the oldest telling, the formless matter that existed before creation.
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="margin-card" data-ask>
+          <div class="ah"><span>The margin</span><span>yours to write in</span></div>
+          <label for="at">What kind of chaos</label>
+          <input id="at" name="topic" type="text" list="chaos-types" placeholder="BIM · computation · AI · adoption · a career knot…">
+          <datalist id="chaos-types">
+            <option value="BIM standards & workflows"></option>
+            <option value="Computational / parametric design"></option>
+            <option value="AI in practice"></option>
+            <option value="Technology adoption & culture"></option>
+            <option value="Automation & scripting"></option>
+            <option value="A design technology career"></option>
+          </datalist>
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label for="aq">The chaos</label>
+          <textarea id="aq" name="question" placeholder="What's tangled? Start anywhere." required></textarea>
+          <div class="mess-row">
+            <div>
+              <label for="an">Name <span>(optional)</span></label>
+              <input id="an" name="name" type="text" placeholder="Ada">
+            </div>
+            <div>
+              <label for="ae">Email <span>(for the reply)</span></label>
+              <input id="ae" name="email" type="email" placeholder="you@firm.com" required>
+            </div>
+          </div>
+          <button type="submit">Send the chaos</button>
+          <div class="mess-note" data-asknote>Goes straight to Jordan. Never shared, never spammed.</div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -513,7 +511,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">How I work</h2>
-      <span class="sec-sub">three principles and a log</span>
+      <span class="sec-sub">how I stay calm</span>
     </div>
     <div class="method-grid">
       <div class="reveal">
@@ -561,37 +559,41 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <h2 class="sec-title">About</h2>
-      <span class="sec-sub">the person behind the margin</span>
+      <span class="sec-sub">answering as someone</span>
     </div>
-    <div class="about-copy reveal">
-      <p><b>Jordan Billingsley</b> is a design technologist who lives for complex puzzles and has zero patience for tedium, which is exactly why he automates it away.</p>
-      <p>He is Senior Associate and Senior Design Technology Manager at <b>Hord Coplan Macht</b> in Baltimore, adjunct faculty at <b>Morgan State University's</b> School of Architecture &amp; Planning, and a contributor to <b>Superusers</b> (2019) and <b>The Agentic Architect</b> (2026). Trained as an architect at the University of Illinois at Urbana-Champaign (B.Arch, M.Arch).</p>
-      <p>ARCHIKAOS is his notebook on the space between carefully designed structure and the formless matter before creation: turning disorder into systems, and systems back into possibility. One mess at a time.</p>
-      <div class="facts">
-        <span>Hord Coplan Macht</span><span>Morgan State</span><span>UIUC B.Arch / M.Arch</span><span>Baltimore, MD</span>
+    <div class="strike-wrap reveal">
+      <div class="strike-line">"How's everyone doing tonight?"</div>
+      <p class="strike-cap">One of my all-time favorite comedians warns about opening with this cliché. It's not a very effective way to connect with the audience, and it signals you have nothing better to say.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>I feel similarly about About sections. My professional information lives on <a class="in-link" data-link="linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>. This section is for connecting personally and having a little fun.</p>
+        <p>So I'll start with my affinity for goats. You may have noticed the favicon. Three more goats are hiding on this site, waiting to be found. When you find one, tell me.</p>
+        <p>Why goats, you ask? Well, the goat has been my mark since architecture school. Goats are calm on terrain that scares everything else. They are sure-footed, load-bearing, and up for the occasional playful headbutt. Meeting chaos with calm.</p>
       </div>
-      <a class="cv-link" data-link="linkedin" target="_blank" rel="noopener">Full trajectory on LinkedIn ↗</a>
+      <div class="reveal">
+        <div class="goat-card">
+          <div class="gf-head"><span>Fun goat fact</span><span id="gfnum">1 of 5</span></div>
+          <p class="gf-fact" id="gffact"></p>
+          <button class="gf-btn" id="gfnext" type="button">another fact</button>
+        </div>
+      </div>
+    </div>
+    <div class="strike-wrap strike-close reveal">
+      <div class="strike-line">"That's me in a nutshell."</div>
     </div>
   </div>
 </section>
 
-<!-- ============ SUBSCRIBE ============ -->
-<section id="subscribe" class="subfinal">
+<!-- ============ CONNECT ============ -->
+<section id="connect" class="subfinal">
   <div class="wrap">
-    <div class="reveal">
-      <h2 class="big">Fewer messes, <em>together.</em></h2>
-      <p class="sp">New essays by email as they're written, on design technology, AI, and the practice of architecture. Written by a human, for the humans still doing the untangling.</p>
-      <form class="sub-form" data-sub style="max-width:440px">
-        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
-        <button type="submit">Get new essays</button>
-      </form>
-      <div class="sub-note" data-subnote>No noise. Unsubscribe anytime.</div>
-      <div class="alt-chan">
-        <span><span class="lbl">The mess:</span> <a href="#mess">tell me what's tangled ↑</a></span>
-        <span><span class="lbl">LinkedIn:</span> <a data-link="linkedin" target="_blank" rel="noopener">/in/jordan-billingsley ↗</a></span>
-        <span><span class="lbl">Speaking:</span> <a data-mail="speaking">invite me ↗</a></span>
-        <span><span class="lbl">Email:</span> <a data-mail="hello" id="mailtext">hello@archikaos.com</a></span>
-      </div>
+    <div class="alt-chan reveal">
+      <span><span class="lbl">Send me chaos:</span> <a href="#chaos">I will respond in calm ↑</a></span>
+      <span><span class="lbl">LinkedIn:</span> <a data-link="linkedin" target="_blank" rel="noopener">/in/jordan-billingsley ↗</a></span>
+      <span><span class="lbl">Speaking:</span> <a data-mail="speaking">invite me ↗</a></span>
+      <span><span class="lbl">Email:</span> <a data-mail="hello" id="mailtext">jordan@archikaos.com</a></span>
+      <span><span class="lbl">Essays:</span> <a href="#connect" data-get>get them by email or fork ↗</a></span>
     </div>
   </div>
 </section>
@@ -599,7 +601,7 @@
 <footer>
   <span>ARCHIKAOS © <span id="yr"></span> Jordan Billingsley</span>
   <span><span class="accent">·</span> sharing thoughts, no ads, connect for more</span>
-  <span>set in Fraunces &amp; Newsreader</span>
+  <span>set in Fraunces &amp; Newsreader <span class="goat-icon goat-ft" title="You found one. Tell me."></span></span>
 </footer>
 
 <!-- ============ ESSAY OVERLAY ============
@@ -614,6 +616,7 @@
 <div class="modal" id="getmodal" role="dialog" aria-modal="true" aria-label="Get the essays">
   <div class="get-card">
     <button class="get-x" id="getx">Close ✕</button>
+    <div class="get-note" id="getnote">I'm still working on this one...</div>
     <h3>Get the essays</h3>
     <p class="gp">Enter your email to receive every published essay, and new ones as they arrive.</p>
     <form class="sub-form" data-sub>
@@ -623,6 +626,9 @@
     <div class="sub-note" data-subnote>No noise. Unsubscribe anytime.</div>
     <div class="gdiv">or</div>
     <p class="galt">Prefer the source? <a href="https://github.com/archikaos/archikaos" target="_blank" rel="noopener">Fork the repository ↗</a> It is the site's living single source of truth: every published essay in plain text, yours to use and build on however you wish.</p>
+    <div class="gdiv">thanks</div>
+    <p class="galt">My goal is to connect. The best way to support me is to use and share my writing, and to <a data-link="linkedin" target="_blank" rel="noopener">add me to your network ↗</a>. If we can't meet in person and you would still like to say thanks, you can buy me a coffee.</p>
+    <a class="kofi-btn" href="https://ko-fi.com/D1D51D0QO8" target="_blank" rel="noopener"><img class="kofi-cup" src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi">Buy me a coffee</a>
   </div>
 </div>
 <!-- fixed chrome lives OUTSIDE the modal: backdrop-filter on .modal would otherwise
@@ -633,28 +639,42 @@
 <script>
 /* ================= CONFIG: everything you need to wire lives here ================= */
 const CFG = {
-  // TODO: paste your list provider's form action to go live.
-  // Buttondown:  "https://buttondown.com/api/emails/embed-subscribe/YOUR_USERNAME"
-  // ConvertKit:  "https://app.kit.com/forms/YOUR_FORM_ID/subscriptions"
-  SUBSCRIBE_ACTION: "",
-  // TODO: paste a Formspree (or similar) endpoint for The Mess form, e.g. "https://formspree.io/f/YOUR_ID"
-  // Until set, the form falls back to opening the visitor's mail app with their mess pre-filled.
-  ASK_ACTION: "",
-  CONTACT_EMAIL: "hello@archikaos.com",            // TODO: replace with your real address
-  LINKEDIN: "https://www.linkedin.com/in/jordan-billingsley/",
-  BOOK_AGENTIC: "https://www.amazon.com/dp/1041167075",
-  BOOK_SUPERUSERS: "https://www.goodreads.com/en/book/show/41861813-superusers"
+  // Buttondown subscribe endpoint. If ever emptied, the form drops to a demo notice.
+  SUBSCRIBE_ACTION: "https://buttondown.com/api/emails/embed-subscribe/archikaos",
+  // The Chaos form endpoint (Formspree). If ever emptied, the form falls back to a mailto draft.
+  ASK_ACTION: "https://formspree.io/f/xlgqeeby",
+  CONTACT_EMAIL: "jordan@archikaos.com",
+  LINKEDIN: "https://www.linkedin.com/in/jordan-billingsley/"
   // per-essay "join the discussion" LinkedIn links now live in each post's front matter (linkedin: <url>)
 };
 
 /* ---------- wire config into the page ---------- */
 document.querySelectorAll('[data-link="linkedin"]').forEach(a=>a.href=CFG.LINKEDIN);
-document.querySelectorAll('[data-link="agentic"]').forEach(a=>a.href=CFG.BOOK_AGENTIC);
-document.querySelectorAll('[data-link="superusers"]').forEach(a=>a.href=CFG.BOOK_SUPERUSERS);
-document.querySelectorAll('[data-mail="speaking"]').forEach(a=>a.href='mailto:'+CFG.CONTACT_EMAIL+'?subject=Speaking%20inquiry%20%E2%80%94%20ARCHIKAOS');
+document.querySelectorAll('[data-mail="speaking"]').forEach(a=>a.href='mailto:'+CFG.CONTACT_EMAIL+'?subject=Speaking%20inquiry%20%7C%20ARCHIKAOS');
 document.querySelectorAll('[data-mail="hello"]').forEach(a=>a.href='mailto:'+CFG.CONTACT_EMAIL);
 const mt=document.getElementById('mailtext'); if(mt) mt.textContent=CFG.CONTACT_EMAIL;
 document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* a goat for the ones who open the console */
+console.log("%c🐐  you found a goat.\n    calm on terrain that scares everything else.\n    tell me: "+CFG.CONTACT_EMAIL,
+  "color:#2f6d63;font-family:monospace;font-size:13px;line-height:1.6");
+
+/* ---------- fun goat facts (edit the FACTS array to add or remove) ---------- */
+(function(){
+  const FACTS=[
+    "Goats have rectangular pupils, giving them nearly 320 degrees of vision. They notice everything.",
+    "Goats develop accents. Kids raised in the same herd drift toward one another's calls. Even goats speak with the voice of their companions.",
+    "Their mountain cousins stand comfortably on cliff ledges barely wider than their own hooves.",
+    "Pack goats carry a quarter of their body weight uphill, calmly.",
+    "Goats were among the first animals humans ever partnered with, roughly ten thousand years ago."
+  ];
+  const f=document.getElementById('gffact'),n=document.getElementById('gfnum'),b=document.getElementById('gfnext');
+  if(!f)return;
+  let i=Math.floor(Math.random()*FACTS.length);
+  function show(){f.textContent=FACTS[i];n.textContent=(i+1)+" of "+FACTS.length}
+  b.addEventListener('click',()=>{i=(i+1)%FACTS.length;show()});
+  show();
+})();
 
 /* ---------- header state ---------- */
 const hdr=document.getElementById('hdr');
@@ -662,11 +682,18 @@ addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>30));
 
 /* ---------- get-essays window ---------- */
 (function(){
-  const m=document.getElementById('getmodal'), btn=document.getElementById('getbtn'), x=document.getElementById('getx');
-  if(!m||!btn)return;
-  function open(){m.classList.add('open');document.body.classList.add('locked');m.querySelector('input[type=email]').focus()}
+  const m=document.getElementById('getmodal'), x=document.getElementById('getx');
+  if(!m)return;
+  function open(drafting){
+    m.querySelector('.get-card').classList.toggle('drafting',!!drafting);
+    m.classList.add('open');document.body.classList.add('locked');m.querySelector('input[type=email]').focus();
+  }
   function close(){m.classList.remove('open');document.body.classList.remove('locked')}
-  btn.addEventListener('click',e=>{e.preventDefault();open()});
+  /* the header button and the planned-essay cards all open the window;
+     arriving via an unpublished essay card shows the still-working note */
+  document.querySelectorAll('#getbtn,[data-get]').forEach(o=>o.addEventListener('click',e=>{
+    e.preventDefault();open(o.classList.contains('plan-card')||o.dataset.get==='draft');
+  }));
   x.addEventListener('click',close);
   m.addEventListener('click',e=>{if(e.target===m)close()});
   addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))close()});
@@ -732,37 +759,43 @@ document.querySelectorAll('[data-sub]').forEach(form=>{
     const email=form.email.value.trim();
     if(CFG.SUBSCRIBE_ACTION){
       form.action=CFG.SUBSCRIBE_ACTION; form.method='post'; form.target='_blank';
-      note.textContent='Opening your list provider. Check for a confirmation email.';
+      note.textContent='Opening Buttondown in a new tab. Confirm there, then watch your inbox.';
       note.classList.add('ok');
       return; // native submit proceeds
     }
     e.preventDefault();
     if(!email||!email.includes('@'))return;
-    note.textContent='✓ '+email+' captured (demo). Set CFG.SUBSCRIBE_ACTION to wire your list provider.';
+    note.textContent='✓ '+email+' noted (demo mode). The list endpoint is not configured.';
     note.classList.add('ok');
     form.reset();
   });
 });
 
-/* ---------- The Mess form (Formspree if configured, mailto fallback otherwise) ---------- */
+/* ---------- The Chaos form: in-page fetch to Formspree; mailto fallback if unset ---------- */
 (function(){
   const form=document.querySelector('[data-ask]'); if(!form)return;
   const note=form.querySelector('[data-asknote]');
+  const btn=form.querySelector('button[type="submit"]');
   form.addEventListener('submit',e=>{
     const q=form.question.value.trim(), email=form.email.value.trim(), name=form.name.value.trim(),
           topic=form.topic?form.topic.value.trim():'';
-    if(CFG.ASK_ACTION){
-      form.action=CFG.ASK_ACTION; form.method='post'; form.target='_blank';
-      note.textContent='✓ Received. A reply is coming.';
-      note.classList.add('ok');
-      return; // native submit proceeds
-    }
     e.preventDefault();
     if(!q||!email||!email.includes('@'))return;
-    const subject=encodeURIComponent('The mess'+(topic?' ('+topic+')':'')+' | ARCHIKAOS');
+    if(CFG.ASK_ACTION){
+      const data=new FormData(form);
+      data.set('_subject','The chaos'+(topic?' ('+topic+')':'')+' | ARCHIKAOS');
+      btn.disabled=true; note.classList.remove('ok'); note.textContent='Sending…';
+      fetch(CFG.ASK_ACTION,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+        .then(r=>{ if(!r.ok) throw 0;
+          note.textContent='✓ Received. I promise I will reply.'; note.classList.add('ok'); form.reset(); })
+        .catch(()=>{ note.textContent='That did not go through. Email me directly: '+CFG.CONTACT_EMAIL; })
+        .finally(()=>{ btn.disabled=false; });
+      return;
+    }
+    const subject=encodeURIComponent('The chaos'+(topic?' ('+topic+')':'')+' | ARCHIKAOS');
     const body=encodeURIComponent((topic?'Topic: '+topic+'\n\n':'')+q+'\n\nFrom: '+(name||'anonymous')+' ('+email+')');
     window.location.href='mailto:'+CFG.CONTACT_EMAIL+'?subject='+subject+'&body='+body;
-    note.textContent='✓ Opening your mail app. Set CFG.ASK_ACTION for an on-page form.';
+    note.textContent='✓ Opening your mail app.';
     note.classList.add('ok');
   });
 })();
@@ -883,7 +916,8 @@ document.querySelectorAll('[data-sub]').forEach(form=>{
   const fallS=[0,0,0,0], FSTART=[.55,.38,.21,.05], FSPAN=.4;
   const tilt=kl.map((el,i)=>7+i*2+Math.random()*2); /* letters nearer the edge tumble harder */
 
-  function engage(){lastActive=performance.now();sleeping=false;released=false}
+  const goatk=document.getElementById('goatk');
+  function engage(){lastActive=performance.now();sleeping=false;released=false;if(goatk)goatk.classList.remove('show')}
   ['pointermove','pointerdown','keydown','wheel','touchstart'].forEach(ev=>
     addEventListener(ev,engage,{passive:true}));
   addEventListener('scroll',engage,{passive:true});
@@ -991,7 +1025,7 @@ document.querySelectorAll('[data-sub]').forEach(form=>{
         kl[i].style.opacity=(1-fl*.5).toFixed(2);
       }
     }
-    if(!released&&fallS[0]>.995)released=true; /* K has landed; the stress is spent */
+    if(!released&&fallS[0]>.995){released=true;if(goatk)goatk.classList.add('show')} /* K has landed; a goat arrives to stand on the rubble */
     const avg=weight>0?strain/weight:0;
     calmHold=(settle===0&&avg<.15&&ent<.12&&!released&&fallS[3]<.05)?calmHold+1:0;
     if(calmHold>20&&!calmShown){calmShown=true;showCalm()}
