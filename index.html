@@ -61,6 +61,10 @@
   .hnav a:hover{color:var(--ink)}
   .hsub{font-size:13px;font-weight:600;background:var(--accent);color:#fff !important;padding:9px 18px;border-radius:99px;transition:background .25s;white-space:nowrap}
   .hsub:hover{background:var(--accent-ink)}
+  /* ghost pill for the book; hides with the plain links on mobile so Get Essays stays the lone CTA */
+  .hbook{font-size:13px;font-weight:600;color:var(--accent) !important;border:1px solid var(--accent);
+    padding:8px 17px;border-radius:99px;white-space:nowrap;transition:background .25s}
+  .hbook:hover{background:var(--accent-wash)}
   @media(max-width:900px){.hnav a:not(.hsub){display:none}}
   @media(max-width:900px){
     header{padding:12px 20px}
@@ -239,6 +243,22 @@
   .chaos-note.ok{color:var(--accent);font-weight:500}
 
 
+  /* ---------- books ---------- */
+  .shelf{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+  @media(max-width:820px){.shelf{grid-template-columns:1fr}}
+  .bk{display:grid;grid-template-columns:190px 1fr;gap:26px;align-items:start}
+  @media(max-width:520px){.bk{grid-template-columns:1fr;gap:18px}.bk .cover{max-width:150px}}
+  .cover{display:block;width:100%;height:auto;border-radius:8px;
+    transition:transform .3s,box-shadow .3s;box-shadow:0 10px 26px rgba(35,38,43,.18)}
+  a:hover .cover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(35,38,43,.26)}
+  .bk-info .badge{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-wash);border-radius:99px;padding:5px 12px;margin-bottom:14px}
+  .bk-info h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.35rem;letter-spacing:-.01em;line-height:1.2;margin-bottom:6px;color:var(--ink)}
+  .bk-info .byline{font-size:12.5px;color:var(--faint);letter-spacing:.04em;margin-bottom:12px;text-transform:uppercase}
+  .bk-info p{color:var(--dim);font-size:.98rem;line-height:1.65;max-width:44ch}
+  .bk-info .blink{display:inline-block;margin-top:14px;font-size:14px;font-weight:600;color:var(--accent)}
+  .bk-info .blink:hover{color:var(--accent-ink)}
+
   /* ---------- speaking ---------- */
   .keynote{background:var(--card);border:1px solid var(--line-soft);border-left:4px solid var(--accent);border-radius:16px;
     padding:34px 36px;margin-bottom:40px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;box-shadow:0 10px 30px rgba(35,38,43,.06)}
@@ -321,6 +341,7 @@
   <nav class="hnav">
     <a href="#writing">Start Reading</a>
     <a href="#chaos">Share Your Chaos</a>
+    <a class="hbook" data-link="agentic" target="_blank" rel="noopener">Get 'The Agentic Architect'</a>
     <a href="#connect" class="hsub" id="getbtn">Get Essays</a>
   </nav>
 </header>
@@ -448,6 +469,38 @@
       <div class="tm"><span class="tm-kind">session</span><span class="tm-title">Creating a Technology-Receptive Culture</span></div>
       <div class="tm"><span class="tm-kind">workshop</span><span class="tm-title">BIM Manager Boot Camp</span></div>
       <div class="tm"><span class="tm-kind">article</span><span class="tm-title">How to Measure Software Investment</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKS ============ -->
+<section id="books">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">On the shelf</h2>
+      <span class="sec-sub">books I'm featured in</span>
+    </div>
+    <div class="shelf">
+      <a class="bk reveal" data-link="agentic" target="_blank" rel="noopener">
+        <img class="cover" src="assets/cover-agentic-architect.jpg" alt="The Agentic Architect book cover">
+        <div class="bk-info">
+          <span class="badge">2026</span>
+          <h3>The Agentic Architect</h3>
+          <div class="byline">Randy Deutsch · Routledge</div>
+          <p>Agentic AI completes tasks. An agentic architect acts with purpose. A practical, tool-agnostic guide to rebuilding agency in the age of AI, with a contribution from Jordan.</p>
+          <span class="blink">Find the book ↗</span>
+        </div>
+      </a>
+      <a class="bk reveal" data-link="superusers" target="_blank" rel="noopener">
+        <img class="cover" src="assets/cover-superusers.jpg" alt="Superusers book cover">
+        <div class="bk-info">
+          <span class="badge">2019</span>
+          <h3>Superusers</h3>
+          <div class="byline">Randy Deutsch · Routledge</div>
+          <p>The book that named the role. Who design technology specialists are, the value they bring, and how they will shape the future of practice. Jordan is a contributor.</p>
+          <span class="blink">Find the book ↗</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -645,12 +698,17 @@ const CFG = {
   // The Chaos form endpoint (Formspree). If ever emptied, the form falls back to a mailto draft.
   ASK_ACTION: "https://formspree.io/f/xlgqeeby",
   CONTACT_EMAIL: "jordan@archikaos.com",
-  LINKEDIN: "https://www.linkedin.com/in/jordan-billingsley/"
+  LINKEDIN: "https://www.linkedin.com/in/jordan-billingsley/",
+  // book links ("On the shelf"); covers are the Amazon listing art, self-hosted in assets/
+  BOOK_AGENTIC: "https://www.amazon.com/Agentic-Architect-Randy-Deutsch/dp/1041167075/",
+  BOOK_SUPERUSERS: "https://www.amazon.com/Superusers-Design-Technology-Specialists-Practice/dp/0815352603"
   // per-essay "join the discussion" LinkedIn links now live in each post's front matter (linkedin: <url>)
 };
 
 /* ---------- wire config into the page ---------- */
 document.querySelectorAll('[data-link="linkedin"]').forEach(a=>a.href=CFG.LINKEDIN);
+document.querySelectorAll('[data-link="agentic"]').forEach(a=>a.href=CFG.BOOK_AGENTIC);
+document.querySelectorAll('[data-link="superusers"]').forEach(a=>a.href=CFG.BOOK_SUPERUSERS);
 document.querySelectorAll('[data-mail="speaking"]').forEach(a=>a.href='mailto:'+CFG.CONTACT_EMAIL+'?subject=Speaking%20inquiry%20%7C%20ARCHIKAOS');
 document.querySelectorAll('[data-mail="hello"]').forEach(a=>a.href='mailto:'+CFG.CONTACT_EMAIL);
 const mt=document.getElementById('mailtext'); if(mt) mt.textContent=CFG.CONTACT_EMAIL;
