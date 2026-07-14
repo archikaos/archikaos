@@ -22,9 +22,9 @@ next_tease: The essay continues Monday, July 20.
 <p>The distinction matters, because AI can sound like what it is not. Experience is the past tense of knowledge. The model can perform authority without a past. Responsibility is the future tense of judgment. The model can offer confidence without a future. Do you see the danger?</p>
 <p>It is fluent in both tenses.<br>And present in <span class="seriesword">neither</span>.</p>
 <p>Now consider what our profession is built on.</p>
-<p>The architect's seal is a future tense you can hold. Every stamped sheet is a sentence that says, "I will answer for this." Not today, when the rendering looks good. Years from now, when the water finds the joint. The license, the liability, the standard of care: our entire profession is a structure for making someone <em>present</em> in a building's future.</p>
+<p>The architect's seal is a future tense you can hold. Every stamped sheet is a sentence that says, "I will answer for this." Not today, when the rendering looks good. Years from now, when the water finds the joint. The license, the liability, the standard of care. Our entire profession is a structure for making someone <em>present</em> in a building's future.</p>
 <p>That is what makes this moment genuinely new. Competent-sounding answers used to be scarce because they had to come from someone with a past and a future, someone who had earned the fluency and would be held to it. Now the fluency is free, infinite, and unattached.</p>
 <p>Which does not diminish the architect. It relocates us. When fluency costs nothing, the scarce thing, the valuable thing, is no longer the answer. It is the signature of someone willing to answer for the answer.</p>
 <p>Design and signature grow from the same Latin root, <em>signum</em> (the mark). To design and to sign were never two acts. Both are a mark that points back at its maker. The word "are" reminds us that fluency is not the same as presence. Presence has a before and an after.</p>
 <p>So where are we in our exegesis? <em>You are.</em> A posture exists, fluent and tenseless, waiting on our next word. And the next word is the hinge of the whole thing, the word that decides what follows, on both sides of the screen.</p>
-<p class="pointer">Part 3, next Monday: you are, THEREFORE I am.</p>
+<p class="pointer">Part 3, next Monday. you are, THEREFORE I am.</p>
