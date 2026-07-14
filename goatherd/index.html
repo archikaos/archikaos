@@ -39,6 +39,12 @@
     text-transform:uppercase;font-size:12px;color:var(--accent)}
   h1{margin-top:14px;font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,6vw,42px);
     line-height:1.15;color:var(--ink)}
+  /* the crossed-out cliché, borrowed from #about: the joke as a graphic.
+     knob: strike angle/thickness via ::after */
+  .strike{position:relative;display:inline-block;color:var(--faint)}
+  .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.06em;
+    background:var(--accent);border-radius:3px;transform:rotate(-2deg)}
+  .h1-real{display:block;margin-top:6px}
   p{margin-top:18px;font-size:16.5px}
   /* the register: a climbing logbook */
   .register{margin:34px auto 0;max-width:30rem;list-style:none;text-align:left}
@@ -66,10 +72,10 @@
 <main>
   <span class="goat" aria-hidden="true"></span>
   <div class="eyebrow">the goatherd</div>
-  <h1>Herders.</h1>
+  <h1><span class="strike">Leader Board</span><span class="h1-real">Herder Board</span></h1>
   <p>Three goats live wild on this site today, and one has been found. Every goat found sends a real goat to a family who needs one, through <a href="https://www.heifer.org/gift-catalog" target="_blank" rel="noopener">Heifer International</a>, in the herder's name.</p>
   <ol class="register">
-    <li><span class="who"><a href="https://www.linkedin.com/in/evantroxel/" target="_blank" rel="noopener">Evan Troxel</a></span> has found a goat. Which one is still his secret. <span class="date">July 14, 2026</span></li>
+    <li><span class="who"><a href="https://www.linkedin.com/in/evantroxel/" target="_blank" rel="noopener">Evan Troxel</a></span> has found a goat! <span class="date">July 14, 2026</span></li>
     <li class="open"><span class="who">The sentinel goat</span> has not yet been found.</li>
     <li class="open"><span class="who">The whisper goat</span> has not yet been found.</li>
   </ol>
