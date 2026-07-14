@@ -9,6 +9,7 @@ part: The Portrait in the Prompt
 summary: Every persona we write is a quiet portrait of what we're reaching for. Essay I of the series "You Are, Therefore I Am."
 q: 'What''s the most revealing thing you''ve ever asked AI to be?<span class="reminder">Remember, everything is a mirror.</span>'
 next_tease: The essay continues Monday, July 13.
+linkedin: https://www.linkedin.com/posts/jordan-billingsley_you-probably-didnt-know-i-have-a-website-share-7482621063043108864-kXCj/
 ---
 <p>Every day, millions of us type some version of the same sentence into AI.</p>
 <div class="crescendo"><div class="c1">You are an expert.</div><div class="c2">You are an expert.</div><div class="c3">You are an expert.</div></div>

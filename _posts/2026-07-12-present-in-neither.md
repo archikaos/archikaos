@@ -9,6 +9,7 @@ part: Present in Neither
 summary: The model is fluent in both tenses, and present in neither. Essay II of the series "You Are, Therefore I Am."
 q: 'When you review AI-assisted work, what do you check first?<span class="qopts"><label><input type="checkbox"> the content</label><label><input type="checkbox"> the confidence</label></span>'
 next_tease: The essay continues Monday, July 20.
+linkedin: https://www.linkedin.com/posts/jordan-billingsley_you-probably-didnt-know-i-have-a-website-share-7482621063043108864-kXCj/
 ---
 <p>For the first time in professional practice, fluency has been separated from accountability. That is not a complaint about AI. It is a description of a word.</p>
 <p>Last week I wrote about "you," the counterpart we summon and the portrait it paints of us. This week, a more dangerous word, and not only for the role it grants. The deeper danger is <em>when</em> it grants it.</p>
