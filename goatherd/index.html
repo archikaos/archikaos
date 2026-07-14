@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herders | ARCHIKAOS</title>
+<meta name="description" content="The herd, and those who tend it.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* mirrors index.html's calm palette; keep in sync */
+  :root{
+    --paper:#f7f3ea;
+    --ink:#23262b;
+    --body:#33363b;
+    --dim:#655f55;
+    --faint:#958d7f;
+    --line:rgba(35,38,43,.13);
+    --accent:#2f6d63;
+    --accent-ink:#24564e;
+    --accent-wash:rgba(47,109,99,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--body);
+    font-family:'Archivo',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+  main{max-width:36rem;text-align:center;animation:rise .7s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){main{animation:none}}
+  /* knobs: goat size and quietness */
+  .goat{display:inline-block;width:40px;height:39px;background:currentColor;color:var(--ink);opacity:.75;
+    -webkit-mask:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA/CAYAAABQHc7KAAAFEUlEQVR42t3baYxdYxgH8F/HtLS22moptVTQqhqMNXYqsS+JRIggDUFIrAk+8BEfCL6IJfYi9tDgA9pKldZeWqWltTXTVmta1al2pteH80wc173n3rm3Y+65/+TNXc55T87zvM/77C/VYxsM0mTYpMr7zsUpmB6/d8JROB5t6MYyTYqzMROn4hjci9n4Fo/iAuzcrMSfiQ58glfwJwp4FuP6IEG5xPn4LQjuic8CHsSwZiZ8ECZieYroXiY8iq00OSais4j4Qii6G7FZMxN/GX4vQXzvWI83Mb4Zxf5yrMkgPj0W4KJm8QsG41qsrpL43rEGt8b8XKO9gthnjXW4Lu+e4PbxfQX2qWH+weEnLMq7JEyoUQoKeAvD80h0S+r7mDqec1K4yrlmwKF1KtLz0ZpX8d8BX9SxBQoRM+ySN8J7V2x8DQqwGDviCvwYinV4mNZvIprsCEY1JAMmYOhGeN4dJf7rwdf4CDMwN5i0MszogHuAO+DliPX7Gz1YEmM+vouIc2WMVeFglTK3g0NnrcbPWBrxSd0MaMNkjBzgxfgrJGJdGWXdO9YFozrwGT7HwmBqV2Sm/ujLFmjBkAbYjpvGqAbbYU8cmZKs34OJnfgUz2NaGYn6l2j9ga2xVzCiJ5gyKGfmfFjkKkbgQEke8yD8ip8qPWBoWIITcQkWF5m4zhC9Qg7HYlxV5PNkoi32UTrquz2UViGnoxMXVsuAc0KZ9E6eLkmDP5NjBhTC/I7KcoV7MTaljDaEMunA1EZ0ZPqAMTijGpd4Voprc1Lu7e5FWyOP47VKErAf9k/9fjyUiPDeJuVcCsZXMrUnY20QOS/sbRojI/GRVwlYEea+rATMDmVBUgNYXnR9WTU2tYGxBQ7IYsBS3I+PJaWwYnSHXpDjBHB7NU7Rvhl1v0uKSmV5G1NDEsqWx7tTZbFy8cO52DynUrBrRKAz1VjdXY/TGyB6rCduaA9l/1UtDFgnSYW351gXDMMJWN1Sw+RufC//2Aw3tNQ4uUtzYKuWOpIXzYD3W2q0peNySvBKPIwp8fvD1hq9qbE5JL4bt+ChCItfxJZqLKjenUMH6Lmi3OeYyIDVHFvPyxHxn4R3a2O30C3JAfFzJE2d/YKTJLn5el/yHTwhye9v2IjEz6ikr+ptdFyIV6NaM1KSXq/FsryEa/BUKiSfJWnMHFXDe67CI7j6/2zc2CUixUmRQe7LSj5ZptdoKB6oQZpOG8gu1lbsjevxS5Uv/QG2LfO8o8N+V/OcaZIMdsPgUHxZxYv/ktGhclgkaio9YwmOqKdDpD/wMa6MhGqlELs7w/GqpnT/mKQEr1Ebr1fITleXa8A+K5iTtfpfYHS9PUL9iZck5ww2lLk+V/kq7vAKCm29pIP9+0ZmQAH34f0y15dkzK2UeZoRbq5GZoDwFe6JFesL9sq4tjYka1UeGADvhclT4kBWOfwQ4l1qi7yL1/MWlt5UQom9kHEOYQj2wMX+W5ucXWeD54DgkBKELAjnKQt7S7o9ipn3Rj0dbi0DwID5+Krovz0kWdosHO6fxm6pDPXbjdBu11fcWWIlJ2fkGrcIX6H4DNNdA7SIdeOM1BG8dBvLIcqfY+oquv/pdIkrb2gr4xneVuLeY0uU5KdgN/LdqLC8BAOmp8LiwTivBPGLMiSlNS+HOSdI+hOLGdAViZFLwzQWi/1ySWG2FEaHR3hcHhhwcw0l9r8k5xZLYYSkn6Ggjwc3/gbtupVJL+2T0AAAAABJRU5ErkJggg==) no-repeat center/contain;mask:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA/CAYAAABQHc7KAAAFEUlEQVR42t3baYxdYxgH8F/HtLS22moptVTQqhqMNXYqsS+JRIggDUFIrAk+8BEfCL6IJfYi9tDgA9pKldZeWqWltTXTVmta1al2pteH80wc173n3rm3Y+65/+TNXc55T87zvM/77C/VYxsM0mTYpMr7zsUpmB6/d8JROB5t6MYyTYqzMROn4hjci9n4Fo/iAuzcrMSfiQ58glfwJwp4FuP6IEG5xPn4LQjuic8CHsSwZiZ8ECZieYroXiY8iq00OSais4j4Qii6G7FZMxN/GX4vQXzvWI83Mb4Zxf5yrMkgPj0W4KJm8QsG41qsrpL43rEGt8b8XKO9gthnjXW4Lu+e4PbxfQX2qWH+weEnLMq7JEyoUQoKeAvD80h0S+r7mDqec1K4yrlmwKF1KtLz0ZpX8d8BX9SxBQoRM+ySN8J7V2x8DQqwGDviCvwYinV4mNZvIprsCEY1JAMmYOhGeN4dJf7rwdf4CDMwN5i0MszogHuAO+DliPX7Gz1YEmM+vouIc2WMVeFglTK3g0NnrcbPWBrxSd0MaMNkjBzgxfgrJGJdGWXdO9YFozrwGT7HwmBqV2Sm/ujLFmjBkAbYjpvGqAbbYU8cmZKs34OJnfgUz2NaGYn6l2j9ga2xVzCiJ5gyKGfmfFjkKkbgQEke8yD8ip8qPWBoWIITcQkWF5m4zhC9Qg7HYlxV5PNkoi32UTrquz2UViGnoxMXVsuAc0KZ9E6eLkmDP5NjBhTC/I7KcoV7MTaljDaEMunA1EZ0ZPqAMTijGpd4Voprc1Lu7e5FWyOP47VKErAf9k/9fjyUiPDeJuVcCsZXMrUnY20QOS/sbRojI/GRVwlYEea+rATMDmVBUgNYXnR9WTU2tYGxBQ7IYsBS3I+PJaWwYnSHXpDjBHB7NU7Rvhl1v0uKSmV5G1NDEsqWx7tTZbFy8cO52DynUrBrRKAz1VjdXY/TGyB6rCduaA9l/1UtDFgnSYW351gXDMMJWN1Sw+RufC//2Aw3tNQ4uUtzYKuWOpIXzYD3W2q0peNySvBKPIwp8fvD1hq9qbE5JL4bt+ChCItfxJZqLKjenUMH6Lmi3OeYyIDVHFvPyxHxn4R3a2O30C3JAfFzJE2d/YKTJLn5el/yHTwhye9v2IjEz6ikr+ptdFyIV6NaM1KSXq/FsryEa/BUKiSfJWnMHFXDe67CI7j6/2zc2CUixUmRQe7LSj5ZptdoKB6oQZpOG8gu1lbsjevxS5Uv/QG2LfO8o8N+V/OcaZIMdsPgUHxZxYv/ktGhclgkaio9YwmOqKdDpD/wMa6MhGqlELs7w/GqpnT/mKQEr1Ebr1fITleXa8A+K5iTtfpfYHS9PUL9iZck5ww2lLk+V/kq7vAKCm29pIP9+0ZmQAH34f0y15dkzK2UeZoRbq5GZoDwFe6JFesL9sq4tjYka1UeGADvhclT4kBWOfwQ4l1qi7yL1/MWlt5UQom9kHEOYQj2wMX+W5ucXWeD54DgkBKELAjnKQt7S7o9ipn3Rj0dbi0DwID5+Krovz0kWdosHO6fxm6pDPXbjdBu11fcWWIlJ2fkGrcIX6H4DNNdA7SIdeOM1BG8dBvLIcqfY+oquv/pdIkrb2gr4xneVuLeY0uU5KdgN/LdqLC8BAOmp8LiwTivBPGLMiSlNS+HOSdI+hOLGdAViZFLwzQWi/1ySWG2FEaHR3hcHhhwcw0l9r8k5xZLYYSkn6Ggjwc3/gbtupVJL+2T0AAAAABJRU5ErkJggg==) no-repeat center/contain}
+  .eyebrow{margin-top:22px;font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:.14em;
+    text-transform:uppercase;font-size:12px;color:var(--accent)}
+  h1{margin-top:14px;font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,6vw,42px);
+    line-height:1.15;color:var(--ink)}
+  p{margin-top:18px;font-size:16.5px}
+  /* the register: a climbing logbook */
+  .register{margin:34px auto 0;max-width:30rem;list-style:none;text-align:left}
+  .register li{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;
+    padding:14px 4px;border-top:1px solid var(--line)}
+  .register li:last-child{border-bottom:1px solid var(--line)}
+  .register li{font-size:15.5px;color:var(--body)}
+  .register .who{font-weight:600;color:var(--ink)}
+  .register .who a{color:inherit;text-decoration:none;border-bottom:1px solid var(--accent-wash)}
+  .register .who a:hover{border-bottom-color:var(--accent)}
+  .register .date{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;
+    color:var(--faint);white-space:nowrap}
+  /* unfound goats: dimmer, waiting */
+  .register li.open{color:var(--faint);font-style:italic}
+  .register li.open .who{color:var(--faint);font-weight:500}
+  .note a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-wash)}
+  .note a:hover{border-bottom-color:var(--accent)}
+  .note{margin-top:26px;font-size:13px;color:var(--faint);max-width:32rem;margin-left:auto;margin-right:auto}
+  .back{display:inline-block;margin-top:30px;padding:12px 22px;border:1px solid var(--accent);border-radius:99px;
+    font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:none;transition:background .25s}
+  .back:hover{background:var(--accent-wash)}
+</style>
+</head>
+<body>
+<main>
+  <span class="goat" aria-hidden="true"></span>
+  <div class="eyebrow">the goatherd</div>
+  <h1>Herders.</h1>
+  <p>Three goats live wild on this site today, and one has been found. Every goat found sends a real goat to a family who needs one, through <a href="https://www.heifer.org/gift-catalog" target="_blank" rel="noopener">Heifer International</a>, in the herder's name.</p>
+  <ol class="register">
+    <li><span class="who"><a href="https://www.linkedin.com/in/evantroxel/" target="_blank" rel="noopener">Evan Troxel</a></span> has found a goat. Which one is still his secret. <span class="date">July 14, 2026</span></li>
+    <li class="open"><span class="who">The sentinel goat</span> has not yet been found.</li>
+    <li class="open"><span class="who">The whisper goat</span> has not yet been found.</li>
+  </ol>
+  <p class="note">This started before the website. I like goats. In school, I'd hide them in my renderings, tucked into a corner of a competition board or a design review drawing. A small reward for whoever was looking closely enough.</p>
+  <a class="back" href="../">return to archikaos.com</a>
+</main>
+<!-- GoatCounter: privacy-first page counts, no cookies (and yes, a goat) -->
+<script data-goatcounter="https://archikaos.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
